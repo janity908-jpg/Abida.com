@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome My Love ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 25px;
+            background: url('https://i.ibb.co/Q70z9mRN/file-00000000fb6081faa45717fd787fdb9b.png') no-repeat center center/cover;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        /* ব্যাকগ্রাউন্ড ব্লার লেয়ার */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1;
+            transition: all 0.8s ease-in-out;
+        }
+
+        body.unlocked .bg-overlay {
+            backdrop-filter: blur(0px);
+            -webkit-backdrop-filter: blur(0px);
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        /* একদম উপরে ফিক্সড হেডার টাইটেল */
+        .top-header {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        /* --- প্রিমিয়াম রি-ডিজাইনড লাইভ টাইমার উইজেট --- */
+        #top-left-timer {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 15px;
+            z-index: 15;
+            background: linear-gradient(135deg, rgba(40, 10, 20, 0.75), rgba(20, 5, 10, 0.85));
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 10px 14px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 12px rgba(255, 105, 180, 0.15);
+            text-align: center;
+            color: #fff;
+            max-width: 195px;
+            animation: timerGlow 3s infinite alternate;
+        }
+
+        @keyframes timerGlow {
+            0% {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 75, 92, 0.15);
+                border-color: rgba(255, 182, 193, 0.3);
+            }
+            100% {
+                box-shadow: 0 10px 35px rgba(255, 75, 92, 0.25), inset 0 0 18px rgba(255, 182, 193, 0.3);
+                border-color: rgba(255, 105, 180, 0.7);
+            }
+        }
+
+        .mini-timer-title {
+            font-size: 11px;
+            color: #ffb3c6;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: 0.8px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            border-bottom: 1px solid rgba(255, 182, 193, 0.25);
+            padding-bottom: 4px;
+        }
+
+        .mini-timer-digits {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .mini-segment {
+            background: rgba(0, 0, 0, 0.45);
+            padding: 4px 5px;
+            border-radius: 10px;
+            min-width: 34px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .mini-segment span {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+        }
+
+        .mini-segment label {
+            font-size: 7.5px;
+            color: #ffccd5;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 440px;
+            text-align: center;
+            color: #fff;
+        }
+
+        /* Password Box Styling (English) */
+        #auth-section {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px 25px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 50px;
+        }
+
+        #auth-section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        #auth-section input {
+            width: 100%;
+            padding: 12px 18px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        #auth-section input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        #auth-section button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            outline: none;
+            background: linear-gradient(135deg, #ff4b5c, #ff1e38);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 75, 92, 0.4);
+            transition: 0.3s;
+        }
+
+        #auth-section button:active {
+            transform: scale(0.96);
+        }
+
+        .error-msg {
+            color: #ff9999;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* Buttons Section (Bangla) */
+        #content-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-in-out;
+            max-height: 75vh;
+            overflow-y: auto;
+            padding: 5px;
+        }
+
+        #content-section.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-card {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 11px 18px;
+            margin: 9px 0;
+            border-radius: 16px;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: 0.3s ease;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .menu-card:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .menu-info h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 1px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .menu-info p {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* --- Generic Modal Popup Styling --- */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 450px;
+            max-height: 85vh;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            overflow-y: auto;
+            text-align: center;
+            position: relative;
+            color: #fff;
+        }
+
+        /* ২ এবং ৫ নম্বর বাটনের লেখার পেছনের প্রিমিয়াম রোমান্টিক ব্যাকগ্রাউন্ড স্টাইল ও স্ক্রোল ফিক্স */
+        #note-modal .modal-content, #eyes-modal .modal-content {
+            background: linear-gradient(135deg, rgba(45, 10, 25, 0.95), rgba(75, 18, 42, 0.92)), url('https://i.ibb.co/Q70z9mRN/file-00000000fb6081faa45717fd787fdb9b.png') no-repeat center center/cover;
+            background-blend-mode: overlay;
+            border: 1.5px solid rgba(255, 150, 190, 0.6);
+            box-shadow: 0 20px 50px rgba(255, 50, 80, 0.4), inset 0 0 30px rgba(255, 150, 180, 0.25);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* লাভ বৃষ্টির কন্টেইনার স্টাইল */
+        .heart-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .rain-heart {
+            position: absolute;
+            top: -20px;
+            color: rgba(255, 150, 180, 0.75);
+            font-size: 14px;
+            user-select: none;
+            animation: heartFall linear infinite;
+        }
+
+        @keyframes heartFall {
+            0% {
+                transform: translateY(0) scale(0.8) rotate(0deg);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(500px) scale(1.3) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        #note-modal .modal-header, 
+        #eyes-modal .modal-header {
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        #note-modal .note-body, 
+        #eyes-modal .note-body {
+            position: relative;
+            z-index: 2;
+            overflow-y: auto !important;
+            max-height: calc(85vh - 100px);
+            padding: 15px;
+            -webkit-overflow-scrolling: touch;
+            
+            /* টেক্সট স্পষ্ট ও বড় করার জন্য নতুন ডিজাইন */
+            font-size: 16px !important;
+            line-height: 1.8;
+            color: #ffffff !important;
+            font-weight: 500;
+            background: rgba(20, 5, 12, 0.82);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 150, 190, 0.3);
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+            text-align: left;
+            white-space: pre-line;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        .modal-header h3 {
+            font-size: 18px;
+        }
+
+        .close-btn {
+            background: #ff4b5c;
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* ১ নম্বর গ্যালারির সাধারণ ফটো গ্রিড ডিজাইন */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .photo-item {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 130px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(0,0,0,0.3);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+
+        .photo-item img:hover {
+            transform: scale(1.05);
+        }
+
+        /* ৩ নম্বর বাটনের প্রিমিয়াম ফ্রেম ফিড ডিজাইন */
+        .photo-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 5px;
+        }
+
+        .photo-frame {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 18px;
+            padding: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .frame-img-box {
+            width: 100%;
+            height: 220px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.4);
+        }
+
+        .frame-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+
+        .frame-img-box img:hover {
+            transform: scale(1.03);
+        }
+
+        .frame-caption {
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #ffe5ec;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Fullscreen Lightbox Modal with Caption */
+        #lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 200;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #lightbox-modal img {
+            max-width: 100%;
+            max-height: 65vh;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            object-fit: contain;
+        }
+
+        #lightbox-caption {
+            margin-top: 15px;
+            color: #ffccd5;
+            font-size: 15px;
+            text-align: center;
+            max-width: 380px;
+            line-height: 1.6;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff4b5c;
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ব্যাকগ্রাউন্ড ব্লার ও হালকা ওভারলে লেয়ার -->
+    <div class="bg-overlay"></div>
+
+    <!-- একদম উপরে ফিক্সড হেডার টাইটেল -->
+    <div class="top-header">
+        Welcome My Love ✨
+    </div>
+
+    <!-- পেজের উপরে বাম সাইডে প্রিমিয়াম রি-ডিজাইনড লাইভ টাইমার উইজেট -->
+    <div id="top-left-timer">
+        <div class="mini-timer-title">💕 একসাথে থাকার সময় 💕</div>
+        <div class="mini-timer-digits">
+            <div class="mini-segment">
+                <span id="days">0</span>
+                <label>দিন</label>
+            </div>
+            <div class="mini-segment">
+                <span id="hours">0</span>
+                <label>ঘণ্টা</label>
+            </div>
+            <div class="mini-segment">
+                <span id="minutes">0</span>
+                <label>মিনিট</label>
+            </div>
+            <div class="mini-segment">
+                <span id="seconds">0</span>
+                <label>সেকেন্ড</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Password Box (English) -->
+        <div id="auth-section">
+            <h2>Enter Password</h2>
+            <input type="password" id="passcode" placeholder="Enter secret code...">
+            <button onclick="checkPassword()">Unlock</button>
+            <p id="error" class="error-msg">Wrong password! Try again.</p>
+        </div>
+
+        <!-- Single Column Buttons Section (Bangla) -->
+        <div id="content-section">
+            <!-- ১. আমাদের স্মৃতি (স্মৃতির ছবিগুলো) -->
+            <div class="menu-card" onclick="openModal('gallery-modal')">
+                <div class="menu-icon">💌</div>
+                <div class="menu-info">
+                    <h3>আমাদের স্মৃতি</h3>
+                    <p>আমাদের কাটানো সুন্দর মুহূর্তগুলো</p>
+                </div>
+            </div>
+
+            <!-- ২. বিশেষ নোট (রাগ ভাঙানোর বার্তা) -->
+            <div class="menu-card" onclick="openModal('note-modal')">
+                <div class="menu-icon">💖</div>
+                <div class="menu-info">
+                    <h3>বিশেষ নোট</h3>
+                    <p>তোমার জন্য জমানো কিছু কথা</p>
+                </div>
+            </div>
+
+            <!-- ৩. তোমার সব সুন্দর ফটো (ম্যাডামের একক ছবি ও ফ্রেম) -->
+            <div class="menu-card" onclick="openModal('madam-gallery-modal')">
+                <div class="menu-icon">📸</div>
+                <div class="menu-info">
+                    <h3>তোমার সব সুন্দর ফটো</h3>
+                    <p>তোমার চমৎকার সব ছবি এক পলকে</p>
+                </div>
+            </div>
+
+            <!-- ৪. আমাদের সব কিছু একসাথে (সরাসরি ড্রাইভ লিংক) -->
+            <div class="menu-card" onclick="openDriveLink()">
+                <div class="menu-icon">📁</div>
+                <div class="menu-info">
+                    <h3>আমাদের সব কিছু একসাথে</h3>
+                    <p>আমাদের সব স্মৃতি ও ফাইল এক ড্রাইভে</p>
+                </div>
+            </div>
+
+            <!-- ৫. আমার চোখে তুমি (আপনার পাঠানো সুবিশাল অনুভূতির চিঠি) -->
+            <div class="menu-card" onclick="openModal('eyes-modal')">
+                <div class="menu-icon">✨</div>
+                <div class="menu-info">
+                    <h3>আমার চোখে তুমি</h3>
+                    <p>তোমার জন্য আমার অনুভূতির ছোট্ট প্রকাশ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ১. আমাদের স্মৃতি গ্যালারি মোডাল -->
+    <div id="gallery-modal" class="custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>আমাদের সুন্দর স্মৃতি 💌</h3>
+                <button class="close-btn" onclick="closeModal('gallery-modal')">×</button>
+            </div>
+            <div class="photo-grid">
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/dsmGTTzy/Screenshot-2025-11-16-14-40-41-675-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/DDxCBkp7/IMG-20251117-WA0011.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/3YYvTT7y/IMG-20250928-WA0013.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/mF464hbj/IMG-20250805-WA0028.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/PGp85Pcz/1785647734320.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/KcYdRw2H/1785647734177.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/fd9NTHXT/1784353910651.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/wZYyKk4C/1773183261352.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/DPBxtBsn/1773183261345.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/Pv1YrygT/1773183261338.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/yvFKGC7/1773183261319.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/qL42sppy/1773183261332.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/Gfq5gvLB/1773183261305.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/yFRD8023/1773183261312.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/6ckppMpQ/1773183261299.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/nMRDp44t/1773183261294.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/5W0ymjJg/1773183261287.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/m5YnbSTs/1773183260587.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/ks01HTYv/1776413653617.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/bjHKsQP5/1784353910578.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/8D0bVjL2/1768963495470.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/JFsGDZyY/1777180246735.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/WvyRLZk1/Screenshot-2025-11-16-07-30-59-136-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/zHGL8VtK/1769161837562.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/YFcKCbPW/1769161837410.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/4RQ8KD3n/1769161837361.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/FbQtkrMp/1769161837352.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/v6VtqKz0/1769161837334.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/QjK1Nhgt/1765594049254.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/LXcZ5jwn/1765594049115.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/xKtyTZnk/1765594048745.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/23ZZmG8j/1765594049124.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/SDqcRDXt/1764575199669.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/ch1yPmBY/1764575199675.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/RG4mDSzW/1764575199660.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/Ng9Q0Y1d/1000021281jpg-0.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/v47bBp3y/Screenshot-2026-10-11-09-52-01-010-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/MxY6z0XY/IMG-20250928-WA0010.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/sdbCHCnX/IMG-20250805-WA0009.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/V0cgKrV7/20251113-171230.png" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/CpNsfYq1/1776413653602.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/0yNCNdJB/1773183261225.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/pvTnx9S5/1784353911109.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/YBD5ddTw/IMG-20260814-WA0162.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/fdRFbCq2/Screenshot-2026-04-29-15-04-14-546-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/B2TXyKrF/Screenshot-2026-08-03-14-51-16-553-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/bpL6Kjd/Screenshot-2026-08-23-23-25-01-439-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/M5RC78pW/Screenshot-2026-04-29-15-04-12-014-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/cS5mvdK7/Screenshot-2026-04-29-15-04-13-297-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/0jFZZjWr/Screenshot-2026-04-26-10-32-09-976-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/Mx6ntXKN/Screenshot-2026-04-29-15-04-04-990-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/PsdJ0Xkq/Screenshot-2026-04-26-10-31-59-482-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/r1xHnmf/Screenshot-2026-04-26-10-31-51-940-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/fdYzd47r/Screenshot-2026-04-17-20-05-35-496-com-gallery-player-1788227397447.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/Pv71QFNt/Screenshot-2026-04-17-20-05-34-337-com-gallery-player-1788227397516.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/ccKDb7kr/Screenshot-2026-04-17-20-05-18-764-com-gallery-player-1788227638236.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/6J0Ds138/Screenshot-2025-11-16-14-40-31-423-com-whatsapp.jpg" alt="Memory"></div>
+                <div class="photo-item" onclick="openSimpleLightbox(this.querySelector('img').src)"><img src="https://i.ibb.co.com/7xrw6C8L/IMG-20251111-114510.jpg" alt="Memory"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ২. বিশেষ নোট মোডাল -->
+    <div id="note-modal" class="custom-modal">
+        <div class="modal-content">
+            <div class="heart-container"></div>
+            <div class="modal-header">
+                <h3>বিশেষ নোট 💖</h3>
+                <button class="close-btn" onclick="closeModal('note-modal')">×</button>
+            </div>
+            <div class="note-body">
+                প্রিয়তমা,
+                
+                জানি তুমি এখন আমার ওপর ভীষণ রেগে আছো। তোমার মুখের সেই চেনা থমথমে ভাবটা বা চোখের কোণের অভিমান আমি দূর থেকেই অনুভব করতে পারছি। বিশ্বাস করো, তোমার এই রাগ করা মুখটাও আমার কাছে পৃথিবীর সবচেয়ে সুন্দর একটা দৃশ্য, তবে তার চেয়েও বেশি কষ্ট পাই যখন বুঝি আমার কোনো ভুলের কারণে তোমার এই সুন্দর মুখটা মলিন হয়ে আছে।
+
+                মানুষ কি কখনো নিজের ছায়ার ওপর বেশিক্ষণ রাগ করে থাকতে পারে? তুমি তো আমার ছায়া, আমার অক্সিজেন, আমার পুরো পৃথিবী। তোমার ওই মিষ্টি মুখে রাগ একদম মানায় না গো! রাগ করলে তোমায় আরো বেশি জেদি লাগে ঠিকই, কিন্তু আমার বুকের ভেতরটা কেমন যেন হু হু করে ওঠে। প্লিজ সোনা, আর কতক্ষণ এমন মুখ করে থাকবে? একটা ছোট্ট মুচকি হাসি কি দেওয়া যায় না তোমার এই পাগলটার দিকে তাকিয়ে?
+
+                আমাদের সম্পর্কের এই পথ চলায় কত ছোটখাটো ভুল বোঝাবুঝি হয়েছে, আবার তা মিটেও গেছে। কিন্তু প্রতিটা ঝগড়ার পরেই একটা জিনিস খুব স্পষ্ট হয়ে ধরা দেয়—তা হলো তোমাকে ভালোবেসে ফেলার তীব্রতা আগের চেয়ে আরও বেড়ে যাওয়া। তোমাকেই তো সব কথা বলতে ইচ্ছে করে, সারাদিনের হাজারটা ক্লান্তি তোমার একটা ফোন কল বা একটা মেসেজ পেলেই কর্পূরের মতো উবে যায়।
+
+                আজ এই মুহূর্তে দাঁড়িয়ে তোমাকে কথা দিচ্ছি, তোমার চোখে আর কখনো জল আসতে দেব না। কোনো ভুল বোঝাবুঝি যেন আমাদের মাঝের এই পবিত্র ভালোবাসার দেয়াল ভাঙতে না পারে। তোমার রাগ ভাঙানোর জন্য যদি সারারাত জেগে তোমায় বোঝাতে হয়, আমি হাসিমুখে তাই করব।
+
+                এখনই সব রাগ অভিমান ভুলে একটা সুন্দর মেসেজ দাও বা কল করো। তোমার সব দোষ মাফ, শুধু তুমি আমার ওপর থেকে এই কঠিন রাগটা তুলে নাও। 
+                অনেক অনেক ভালোবাসা আর বুকভরা মায়া নিয়ে তোমার অপেক্ষায় রইলাম... ❤️✨
+            </div>
+        </div>
+    </div>
+
+    <!-- ৩. তোমার সব সুন্দর ফটো মোডাল -->
+    <div id="madam-gallery-modal" class="custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>তোমার সব সুন্দর ফটো 📸</h3>
+                <button class="close-btn" onclick="closeModal('madam-gallery-modal')">×</button>
+            </div>
+            <div class="photo-feed">
+                <!-- নতুন যুক্ত হওয়া ছবিগুলো -->
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/prd9PF3Y/IMG-20261113-WA0012.jpg', 'তোমার এই মিষ্টি হাসিটা দেখে মন জুড়িয়ে যায়। ✨')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/prd9PF3Y/IMG-20261113-WA0012.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার এই মিষ্টি হাসিটা দেখে মন জুড়িয়ে যায়। ✨</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/HT54LRmk/IMG-20261113-WA0013.jpg', 'অপরূপ সুন্দর এই মুহূর্তটি সত্যিই ভীষণ বিশেষ। 🌸')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/HT54LRmk/IMG-20261113-WA0013.jpg" alt="Memory"></div>
+                    <div class="frame-caption">অপরূপ সুন্দর এই মুহূর্তটি সত্যিই ভীষণ বিশেষ। 🌸</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/CpfnVghL/IMG-20261113-WA0011.jpg', 'চোখের মায়াবী চাহনি যেন এক টুকরো কাব্য। 💫')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/CpfnVghL/IMG-20261113-WA0011.jpg" alt="Memory"></div>
+                    <div class="frame-caption">চোখের মায়াবী চাহনি যেন এক টুকরো কাব্য। 💫</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/jP5bXZk7/IMG-20261113-WA0010.jpg', 'স্নিগ্ধতায় ভরা এই রূপটি চিরকাল এমন সুন্দর থাকুক। 🌹')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/jP5bXZk7/IMG-20261113-WA0010.jpg" alt="Memory"></div>
+                    <div class="frame-caption">স্নিগ্ধতায় ভরা এই রূপটি চিরকাল এমন সুন্দর থাকুক। 🌹</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/pBXDLYkQ/IMG-20261113-WA0009.jpg', 'তোমার উপস্থিতিতে চারপাশটা আলোয় ভরে ওঠে। ✨')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/pBXDLYkQ/IMG-20261113-WA0009.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার উপস্থিতিতে চারপাশটা আলোয় ভরে ওঠে। ✨</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/mrpLGSN2/IMG-20261113-WA0008.jpg', 'জীবনের প্রতিটি সুন্দর অধ্যায়ে তোমার এই হাসিটি জড়িয়ে থাকুক। 💖')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/mrpLGSN2/IMG-20261113-WA0008.jpg" alt="Memory"></div>
+                    <div class="frame-caption">জীবনের প্রতিটি সুন্দর অধ্যায়ে তোমার এই হাসিটি জড়িয়ে থাকুক। 💖</div>
+                </div>
+
+                <!-- পূর্বের ছবিগুলো -->
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/4ZRHs3jj/1773183261038.jpg', 'তোমার এই স্নিগ্ধ হাসিটা আমার সারাদিনের ক্লান্তি নিমিষে দূর করে দেয়! 😊 যখনই তোমায় এমন হাসিখুশি দেখি, মনটা আনন্দে ভরে ওঠে।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/4ZRHs3jj/1773183261038.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার এই স্নিগ্ধ হাসিটা আমার সারাদিনের ক্লান্তি নিমিষে দূর করে দেয়! 😊 যখনই তোমায় এমন হাসিখুশি দেখি, মনটা আনন্দে ভরে ওঠে।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/XrRQZ30M/1773183261168.jpg', 'চোখের এই মায়াবী চাহনি দেখলে বুকের ভেতর কেমন যেন একটা প্রশান্তি কাজ করে। ✨ তুমি আমার জীবনের সবচেয়ে সুন্দর একটা অধ্যায়।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/XrRQZ30M/1773183261168.jpg" alt="Memory"></div>
+                    <div class="frame-caption">চোখের এই মায়াবী চাহনি দেখলে বুকের ভেতর কেমন যেন একটা প্রশান্তি কাজ করে। ✨ তুমি আমার জীবনের সবচেয়ে সুন্দর একটা অধ্যায়।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/JwbVNdJ3/1773183259892.jpg', 'তোমার রূপের কি আর প্রশংসা করব, তুমি তো স্বয়ং একটা রূপকথার রাজকন্যা! 👑 আমার এই ছোট্ট জগতের সবচেয়ে দামি রানি তুমি।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/JwbVNdJ3/1773183259892.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার রূপের কি আর প্রশংসা করব, তুমি তো স্বয়ং একটা রূপকথার রাজকন্যা! 👑 আমার এই ছোট্ট জগতের সবচেয়ে দামি রানি তুমি।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/YBd2nFRT/1769161837754.jpg', 'এই সুন্দর মুহূর্তটা আমাদের জীবনের সেরা একটা উপহার হয়ে থাকবে। 🌸 সারাজীবন তোমায় এভাবেই নিজের খুব কাছাকাছি আগলে রাখতে চাই।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/YBd2nFRT/1769161837754.jpg" alt="Memory"></div>
+                    <div class="frame-caption">এই সুন্দর মুহূর্তটা আমাদের জীবনের সেরা একটা উপহার হয়ে থাকবে। 🌸 সারাজীবন তোমায় এভাবেই নিজের খুব কাছাকাছি আগলে রাখতে চাই।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/j96XfxbP/1768885316154.jpg', 'তোমাকে এভাবে দেখলে আমার মন শুধু বারবার তোমার প্রেমে পড়তে চায়। 🥰 সৃষ্টিকর্তা যেন তোমায় সবসময় এমন হাসিখুশি রাখেন।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/j96XfxbP/1768885316154.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমাকে এভাবে দেখলে আমার মন শুধু বারবার তোমার প্রেমে পড়তে চায়। 🥰 সৃষ্টিকর্তা যেন তোমায় সবসময় এমন হাসিখুশি রাখেন।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/xt64YFxJ/1768884744141.jpg', 'তোমার এই মিষ্টি মুখটা দেখলেই আমার সব মন খারাপ নিমিষে দূর হয়ে যায়। 💖 তুমি আমার হৃদয়ের সবচেয়ে সুরক্ষিত একটা জায়গা জুড়ে আছো।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/xt64YFxJ/1768884744141.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার এই মিষ্টি মুখটা দেখলেই আমার সব মন খারাপ নিমিষে দূর হয়ে যায়। 💖 তুমি আমার হৃদয়ের সবচেয়ে সুরক্ষিত একটা জায়গা জুড়ে আছো।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/hFtg9xSL/1768884743872.jpg', 'আমার জীবনের সবচেয়ে দামি এবং প্রিয় মানুষটা তুমি। 💫 তোমার সাথে কাটানো প্রতিটা সেকেন্ড আমার কাছে ভীষণ মূল্যবান।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/hFtg9xSL/1768884743872.jpg" alt="Memory"></div>
+                    <div class="frame-caption">আমার জীবনের সবচেয়ে দামি এবং প্রিয় মানুষটা তুমি। 💫 তোমার সাথে কাটানো প্রতিটা সেকেন্ড আমার কাছে ভীষণ মূল্যবান।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/kVLHfJ7G/1768884743848.jpg', 'তোমার এই নিষ্পাপ হাসিটা আমার কাছে পৃথিবীর সবচেয়ে দামি জিনিস। 😍 তোমায় ভালোবাসার কোনো শেষ নেই, দিনদিন তা আরও বেড়েই চলেছে।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/kVLHfJ7G/1768884743848.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার এই নিষ্পাপ হাসিটা আমার কাছে পৃথিবীর সবচেয়ে দামি জিনিস। 😍 তোমায় ভালোবাসার কোনো শেষ নেই, দিনদিন তা আরও বেড়েই চলেছে।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/MkLTzmCw/1765594049511.jpg', 'তোমার মিষ্টি চাউনি আমার হৃদয়ে ভালোবাসার জোয়ার তোলে। 🌊 তুমি ছাড়া আমার এই পৃথিবীটা একদমই অসম্পূর্ণ।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/MkLTzmCw/1765594049511.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার মিষ্টি চাউনি আমার হৃদয়ে ভালোবাসার জোয়ার তোলে। 🌊 তুমি ছাড়া আমার এই পৃথিবীটা একদমই অসম্পূর্ণ।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/RGfZVXmW/IMG-20251117-WA0144.jpg', 'কি দারুণ একটা ফ্রেম! মনে হয় যেন এক টুকরো স্বর্গ নেমে এসেছে। 🌹 তোমার এই চমৎকার রূপ দেখে চোখ ফেরানোই যায় না।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/RGfZVXmW/IMG-20251117-WA0144.jpg" alt="Memory"></div>
+                    <div class="frame-caption">কি দারুণ একটা ফ্রেম! মনে হয় যেন এক টুকরো স্বর্গ নেমে এসেছে। 🌹 তোমার এই চমৎকার রূপ দেখে চোখ ফেরানোই যায় না।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/4RR7bvqS/1764575199729.jpg', 'তোমার চোখের গভীরে তাকালেই অন্য এক দুনিয়ায় হারিয়ে যেতে ইচ্ছে করে। 🌌 মনে হয় সারাজীবন এভাবেই তোমার চোখের দিকে তাকিয়ে থাকি।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/4RR7bvqS/1764575199729.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার চোখের গভীরে তাকালেই অন্য এক দুনিয়ায় হারিয়ে যেতে ইচ্ছে করে। 🌌 মনে হয় সারাজীবন এভাবেই তোমার চোখের দিকে তাকিয়ে থাকি।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/SDHDGs7j/IMG-20251117-WA0129.jpg', 'তুমি আমার সকালের প্রথম রোদ্দুর আর রাতের শান্তির ঘুম। ☀️ তোমার সান্নিধ্য আমার জীবনটাকে একদম রঙিন করে তুলেছে।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/SDHDGs7j/IMG-20251117-WA0129.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তুমি আমার সকালের প্রথম রোদ্দুর আর রাতের শান্তির ঘুম। ☀️ তোমার সান্নিধ্য আমার জীবনটাকে একদম রঙিন করে তুলেছে।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/RTVKPz8c/IMG-20250814-WA0016.jpg', 'তোমার প্রতি আমাদের ভালোবাসা প্রতিদিন একটু একটু করে বেড়েই চলেছে। 💗 সারাজীবন এভাবেই আমার সুখ-দুঃখের সঙ্গী হয়ে থেকো।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/RTVKPz8c/IMG-20250814-WA0016.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার প্রতি আমাদের ভালোবাসা প্রতিদিন একটু একটু করে বেড়েই চলেছে। 💗 সারাজীবন এভাবেই আমার সুখ-দুঃখের সঙ্গী হয়ে থেকো।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/SXmR1dY3/IMG-20250814-WA0007.jpg', 'আমার চেনা সবচেয়ে মিষ্টি এবং আদুরে মানুষটি তুমি। 💓 তোমার সাথে কাটানো প্রতিটি মুহূর্ত আমার মনে চিরকাল গেঁথে থাকবে।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/SXmR1dY3/IMG-20250814-WA0007.jpg" alt="Memory"></div>
+                    <div class="frame-caption">আমার চেনা সবচেয়ে মিষ্টি এবং আদুরে মানুষটি তুমি। 💓 তোমার সাথে কাটানো প্রতিটি মুহূর্ত আমার মনে চিরকাল গেঁথে থাকবে।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/p6xqn9p5/IMG-20250814-WA0005.jpg', 'তোমার এই রূপ দেখে তো আমার পলকই পড়তে চায় না! 👀 তুমি এত সুন্দর কেন বলো তো? আমার পাগল মন শুধু তোমাকেই খোঁজে।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/p6xqn9p5/IMG-20250814-WA0005.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার এই রূপ দেখে তো আমার পলকই পড়তে চায় না! 👀 তুমি এত সুন্দর কেন বলো তো? আমার পাগল মন শুধু তোমাকেই খোঁজে।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/Df2XGNHs/1790128640962.jpg', 'তুমি পাশে থাকলে আমার আর কিচ্ছু লাগে না, তুমিই আমার সব। 🌍 আমার এই ছোট হৃদয়ের সবটুকু জুড়ে শুধু তোমারই বাস।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/Df2XGNHs/1790128640962.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তুমি পাশে থাকলে আমার আর কিচ্ছু লাগে না, তুমিই আমার সব। 🌍 আমার এই ছোট হৃদয়ের সবটুকু জুড়ে শুধু তোমারই বাস।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/YBJJmNzy/1790128640900.jpg', 'তোমার ওই মিষ্টি হাসিতেই আমার পুরো পৃথিবীটা আটকে আছে। 💫 তোমার এই এক পলকের হাসি আমার হাজার বছরের ক্লান্তি দূর করে দেয়।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/YBJJmNzy/1790128640900.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার ওই মিষ্টি হাসিতেই আমার পুরো পৃথিবীটা আটকে আছে। 💫 তোমার এই এক পলকের হাসি আমার হাজার বছরের ক্লান্তি দূর করে দেয়।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/cXYK4vhq/1775356164977.jpg', 'তোমার প্রেমে পড়ার অনুভূতিটা পৃথিবীর সবচেয়ে সুন্দর অনুভূতি। ✨ আমি সৌভাগ্যবান যে তোমার মতো একজন মানুষকে পাশে পেয়েছি।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/cXYK4vhq/1775356164977.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার প্রেমে পড়ার অনুভূতিটা পৃথিবীর সবচেয়ে সুন্দর অনুভূতি। ✨ আমি সৌভাগ্যবান যে তোমার মতো একজন মানুষকে পাশে পেয়েছি।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/S4J0hRKv/1769161837759.jpg', 'কি দারুণ একটা লুক! তোমায় দেখতে বড্ড মায়াবী লাগছে। 🌸 তোমার এই রূপের প্রশংসায় আমার ডায়েরির পাতা ফুরিয়ে যাবে।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/S4J0hRKv/1769161837759.jpg" alt="Memory"></div>
+                    <div class="frame-caption">কি দারুণ একটা লুক! তোমায় দেখতে বড্ড মায়াবী লাগছে। 🌸 তোমার এই রূপের প্রশংসায় আমার ডায়েরির পাতা ফুরিয়ে যাবে।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/5XVnd6WW/1768885316068.jpg', 'তোমার এই মায়াবী হাসি আমার বুক চিরে দীর্ঘশ্বাস বের করে দেয়। 💌 তুমি আমার ভালোবাসার এক অনন্য কবিতা।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/5XVnd6WW/1768885316068.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার এই মায়াবী হাসি আমার বুক চিরে দীর্ঘশ্বাস বের করে দেয়। 💌 তুমি আমার ভালোবাসার এক অনন্য কবিতা।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/RG6BLg3B/1768884744161.jpg', 'আমার ছোট্ট হৃদয়ের পুরো অধিকারটাই শুধু তোমার। 💕 বিশ্বাস করো, তোমায় ছাড়া এই জীবনটা কল্পনাও করা যায় না।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/RG6BLg3B/1768884744161.jpg" alt="Memory"></div>
+                    <div class="frame-caption">আমার ছোট্ট হৃদয়ের পুরো অধিকারটাই শুধু তোমার। 💕 বিশ্বাস করো, তোমায় ছাড়া এই জীবনটা কল্পনাও করা যায় না।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/mFc6DBwt/1765594049403.jpg', 'তুমি আমার জীবনের সেরা একটা আশীর্বাদ। 🙏 সৃষ্টিকর্তার কাছে তোমার জন্যই আমার সবচেয়ে সুন্দর প্রার্থনা থাকে।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/mFc6DBwt/1765594049403.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তুমি আমার জীবনের সেরা একটা আশীর্বাদ। 🙏 সৃষ্টিকর্তার কাছে তোমার জন্যই আমার সবচেয়ে সুন্দর প্রার্থনা থাকে।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/hFpGbvkK/1764575199698.jpg', 'তোমার ওই মিষ্টি কণ্ঠ আর মায়াবী হাসি আমার সবসময় মনে থাকে। 🥰 তুমি আমার মনের গহীনে চিরকালের জন্য জায়গা করে নিয়েছ।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/hFpGbvkK/1764575199698.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার ওই মিষ্টি কণ্ঠ আর মায়াবী হাসি আমার সবসময় মনে থাকে। 🥰 তুমি আমার মনের গহীনে চিরকালের জন্য জায়গা করে নিয়েছ।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/pB6gjDyQ/1764575199717.jpg', 'তুমি ছাড়া আমার এই জীবনটা একদমই অর্থহীন। 💖 আমার সুখ, আমার আনন্দ—সবকিছুই তোমায় কেন্দ্র করে আবর্তিত হয়।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/pB6gjDyQ/1764575199717.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তুমি ছাড়া আমার এই জীবনটা একদমই অর্থহীন। 💖 আমার সুখ, আমার আনন্দ—সবকিছুই তোমায় কেন্দ্র করে আবর্তিত হয়।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/nqwWWtD5/IMG-20261113-WA0004.jpg', 'প্রতিটি মুহূর্তে শুধু তোমাকেই ভালোবাসতে ইচ্ছে করে। 🌺 তুমি আমার জীবনের সবচেয়ে চমৎকার একটা ভালো লাগা।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/nqwWWtD5/IMG-20261113-WA0004.jpg" alt="Memory"></div>
+                    <div class="frame-caption">প্রতিটি মুহূর্তে শুধু তোমাকেই ভালোবাসতে ইচ্ছে করে। 🌺 তুমি আমার জীবনের সবচেয়ে চমৎকার একটা ভালো লাগা।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/QF2pD7p3/20251113-171222.png', 'তোমার এই সুন্দর ছবিটা আমার ফোনের গ্যালারির সবচেয়ে প্রিয় ছবি। 📱 যখনই মন খারাপ হয়, এই ছবিটা দেখলেই মন ভালো হয়ে যায়।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/QF2pD7p3/20251113-171222.png" alt="Memory"></div>
+                    <div class="frame-caption">তোমার এই সুন্দর ছবিটা আমার ফোনের গ্যালারির সবচেয়ে প্রিয় ছবি। 📱 যখনই মন খারাপ হয়, এই ছবিটা দেখলেই মন ভালো হয়ে যায়।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/m5MrNgkq/IMG-20261113-WA0007.jpg', 'আমার চোখে তুমি পৃথিবীর সবচেয়ে অপরূপ সুন্দরী এক ললনা। ✨ তোমার তুলনা শুধু তুমি নিজেই, অন্য কারও সাথে হয় না।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/m5MrNgkq/IMG-20261113-WA0007.jpg" alt="Memory"></div>
+                    <div class="frame-caption">আমার চোখে তুমি পৃথিবীর সবচেয়ে অপরূপ সুন্দরী এক ললনা। ✨ তোমার তুলনা শুধু তুমি নিজেই, অন্য কারও সাথে হয় না।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/RpGqhXmr/IMG-20261024-WA0004.jpg', 'সারাদিন তোমার কথা ভেবেই আমার চমৎকার সময় কেটে যায়। 🌹 তুমি আমার ভাবনার পুরো আকাশ জুড়ে রাজত্ব করছো।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/RpGqhXmr/IMG-20261024-WA0004.jpg" alt="Memory"></div>
+                    <div class="frame-caption">সারাদিন তোমার কথা ভেবেই আমার চমৎকার সময় কেটে যায়। 🌹 তুমি আমার ভাবনার পুরো আকাশ জুড়ে রাজত্ব করছো।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/7BKwCNY/IMG-20261023-WA0019.jpg', 'তোমার এই মায়াবী চাহনি আমার সব কষ্ট নিমিষে মুছে দেয়। 💫 তুমি আমার জীবনের সবচেয়ে শান্তির ঠিকানা।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/7BKwCNY/IMG-20261023-WA0019.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমার এই মায়াবী চাহনি আমার সব কষ্ট নিমিষে মুছে দেয়। 💫 তুমি আমার জীবনের সবচেয়ে শান্তির ঠিকানা।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/FkK4RLKd/1773183260754.jpg', 'আমার ভালোবাসার পুরোটা জুড়েই শুধু তোমার নাম লেখা। 💓 সারাজীবন এভাবেই তোমায় ভালোবেসে যাওয়ার প্রতিশ্রুতি রইল।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/FkK4RLKd/1773183260754.jpg" alt="Memory"></div>
+                    <div class="frame-caption">আমার ভালোবাসার পুরোটা জুড়েই শুধু তোমার নাম লেখা। 💓 সারাজীবন এভাবেই তোমায় ভালোবেসে যাওয়ার প্রতিশ্রুতি রইল।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/qMpVLK0q/1773183261191.jpg', 'তুমি আমাদের জীবনের সবচেয়ে সুন্দর ও মিষ্টি একটা অধ্যায়। 📖 এই উপন্যাসের শেষ পাতা পর্যন্ত আমি শুধু তোমাকেই চাই।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/qMpVLK0q/1773183261191.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তুমি আমাদের জীবনের সবচেয়ে সুন্দর ও মিষ্টি একটা অধ্যায়। 📖 এই উপন্যাসের শেষ পাতা পর্যন্ত আমি শুধু তোমাকেই চাই।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/tRBWzxm/IMG-20260912-WA0008.jpg', 'প্রতিটি ভোর তোমার হাসির সাথে শুরু হোক, আর প্রতিটি সন্ধ্যা হোক ভালোবাসায় মোড়ানো।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/tRBWzxm/IMG-20260912-WA0008.jpg" alt="Memory"></div>
+                    <div class="frame-caption">প্রতিটি ভোর তোমার হাসির সাথে শুরু হোক, আর প্রতিটি সন্ধ্যা হোক ভালোবাসায় মোড়ানো।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/xSL055b3/IMG-20260906-WA0054.jpg', 'তুমি আমার কল্পনার চেয়েও অনেক বেশি সুন্দর ও দয়ালু। 🥰 তোমার মনের এই পবিত্র সৌন্দর্যই আমাকে তোমার প্রতি সবচেয়ে বেশি টানে।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/xSL055b3/IMG-20260906-WA0054.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তুমি আমার কল্পনার চেয়েও অনেক বেশি সুন্দর ও দয়ালু। 🥰 তোমার মনের এই পবিত্র সৌন্দর্যই আমাকে তোমার প্রতি সবচেয়ে বেশি টানে।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/xtgpGGfn/IMG-20260830-WA0004-1788225799224.jpg', 'সারাজীবন এভাবেই আমার হাত ধরে পাশে থেকো। 🤝 আমাদের এই ভালোবাসার পথচলা যেন কখনো শেষ না হয়।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/xtgpGGfn/IMG-20260830-WA0004-1788225799224.jpg" alt="Memory"></div>
+                    <div class="frame-caption">সারাজীবন এভাবেই আমার হাত ধরে পাশে থেকো। 🤝 আমাদের এই ভালোবাসার পথচলা যেন কখনো শেষ না হয়।</div>
+                </div>
+
+                <div class="photo-frame" onclick="openLightbox('https://i.ibb.co.com/jP1rp23T/IMG-20260817-WA0004.jpg', 'তোমাকে অনেক শ্রদ্ধা ও ভালোবাসা, আমার ছোট্ট জগতটার রানি! ❤️✨ তুমি আমার অতীত, বর্তমান আর ভবিষ্যৎ—সবকিছু জুড়েই আছো।')">
+                    <div class="frame-img-box"><img src="https://i.ibb.co.com/jP1rp23T/IMG-20260817-WA0004.jpg" alt="Memory"></div>
+                    <div class="frame-caption">তোমাকে অনেক শ্রদ্ধা ও ভালোবাসা, আমার ছোট্ট জগতটার রানি! ❤️✨ তুমি আমার অতীত, বর্তমান আর ভবিষ্যৎ—সবকিছু জুড়েই আছো।</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ৫. আমার চোখে তুমি মোডাল -->
+    <div id="eyes-modal" class="custom-modal">
+        <div class="modal-content">
+            <div class="heart-container"></div>
+            <div class="modal-header">
+                <h3>আমার চোখে তুমি ✨</h3>
+                <button class="close-btn" onclick="closeModal('eyes-modal')">×</button>
+            </div>
+            <div class="note-body">
+                প্রিয় ম্যাডাম,
+
+                কীভাবে শুরু করব, কোথা থেকে শুরু করব, কোন কথার পর কোন কথা লিখব, সত্যি বলতে আমি নিজেও বুঝতে পারছি না। তোমাকে নিয়ে আমার মনের মধ্যে এত কথা জমে আছে যে, সব কথা যদি একদিনে লিখতে বসি, তাহলে হয়তো রাত পেরিয়ে সকাল হয়ে যাবে, দিন পেরিয়ে রাত হয়ে যাবে, তবুও আমার মনের কথাগুলো শেষ হবে না। কারণ তোমাকে নিয়ে আমার অনুভূতিগুলো কোনো নির্দিষ্ট কয়েকটি শব্দের মধ্যে সীমাবদ্ধ নয়। তোমাকে নিয়ে আমার যত কথা, যত ভাবনা, যত কল্পনা, যত স্বপ্ন, যত মায়া, যত অভিমান—সবকিছু মিলিয়েই আমার এই বিশাল গল্প।
+
+                ম্যাডাম, জানো, কিছু মানুষ আমাদের জীবনে আসে খুব সাধারণভাবে, কিন্তু ধীরে ধীরে তারা আমাদের কাছে অসাধারণ হয়ে ওঠে। প্রথমদিকে হয়তো তাদের সঙ্গে কথা বলাটা সাধারণ একটা বিষয় মনে হয়, কিন্তু একসময় সেই মানুষটির সঙ্গে কথা না হলে দিনটা কেমন যেন অসম্পূর্ণ লাগে। তার একটা মেসেজের অপেক্ষা করতে ইচ্ছে করে, তার কণ্ঠ শুনতে ইচ্ছে করে, তার সঙ্গে নিজের ছোট ছোট আনন্দ ভাগ করে নিতে ইচ্ছে করে। তখন বুঝতে পারা যায়, মানুষটি জীবনের কতটা জায়গা দখল করে নিয়েছে।
+
+                তোমাকে নিয়ে আমার অনুভূতিগুলোও ঠিক এমনই। কখন যে তুমি আমার প্রতিদিনের ভাবনার একটা অংশ হয়ে উঠেছ, কখন যে তোমার সঙ্গে কথা বলাটা আমার কাছে এতটা ভালো লাগার বিষয় হয়ে গেছে, সেটা হয়তো আমি নিজেও ঠিকভাবে বুঝতে পারিনি। শুধু এটুকু বুঝেছি, তোমাকে নিয়ে ভাবতে আমার ভালো লাগে। তোমার সঙ্গে কথা বলতে আমার ভালো লাগে। তোমার ভালো থাকা নিয়ে ভাবতে আমার ভালো লাগে। এমনকি তোমার সঙ্গে কাটানো ছোট ছোট মুহূর্তগুলো মনে করতেও আমার ভালো লাগে।
+
+                ম্যাডাম, আমি জানি না তুমি কখনো আমার অনুভূতিগুলো গভীরভাবে বোঝার চেষ্টা করেছ কি না। জানি না আমার বলা ছোট ছোট কথার পেছনে লুকিয়ে থাকা অনুভূতিগুলো তোমার চোখে পড়েছে কি না। হয়তো অনেক সময় আমি মনের কথা ঠিকভাবে প্রকাশ করতে পারি না। হয়তো কখনো এমন কিছু বলি, যেটা দিয়ে আমার আসল অনুভূতিটা বোঝানো সম্ভব হয় না। কিন্তু বিশ্বাস করো, তোমাকে নিয়ে আমার মনে যে অনুভূতি রয়েছে, সেটাকে কয়েকটি সাধারণ বাক্যে প্রকাশ করা সত্যিই কঠিন।
+
+                তোমাকে ভালোবাসি—এই কথাটা হয়তো অনেকবার বলা যায়। প্রতিদিন বলা যায়, প্রতি মুহূর্তে বলা যায়। কিন্তু আমি চাই তুমি শুধু কথাটা শুনে না, আমার আচরণেও এর অর্থ অনুভব করো। আমি চাই তুমি বুঝতে পারো, তোমার কথা আমার কাছে গুরুত্বপূর্ণ। তোমার অনুভূতির মূল্য আমার কাছে রয়েছে। তোমার ভালো লাগা, খারাপ লাগা, পছন্দ, অপছন্দ—সবকিছু জানার আগ্রহ আমার আছে।
+
+                আমি তোমার কাছে এমন কোনো মানুষ হতে চাই না, যার সঙ্গে কথা বলার সময় তোমাকে প্রতিনিয়ত নিজের কথাগুলো মেপে বলতে হবে। আমি চাই তুমি আমার সঙ্গে নিজের মতো করে কথা বলতে পারো। কোনো কিছু ভালো না লাগলে বলতে পারো। কোনো বিষয়ে রাগ হলে জানাতে পারো। আমার কোনো ভুল চোখে পড়লে সেটা আমাকে বুঝিয়ে বলতে পারো। কারণ আমি চাই আমাদের মধ্যে এমন একটা বোঝাপড়া তৈরি হোক, যেখানে সত্যিকারের অনুভূতিগুলো প্রকাশ করার জন্য কোনো ভয় কাজ করবে না।
+
+                ম্যাডাম, তোমাকে নিয়ে আমার সবচেয়ে বড় ইচ্ছাগুলোর একটি হলো, তোমার মুখে সবসময় হাসি দেখতে পাওয়া। আমি জানি, মানুষের জীবনে সবসময় আনন্দ থাকে না। কখনো দুশ্চিন্তা আসে, কখনো ব্যর্থতা আসে, কখনো মন খারাপ হয়, কখনো এমন কিছু পরিস্থিতি তৈরি হয় যেগুলো সহজে মেনে নেওয়া যায় না। তোমার জীবনেও হয়তো এমন অনেক সময় আসবে। আমি চাই, সেই সময়গুলোতে তুমি নিজের প্রতি বিশ্বাস হারিয়ে না ফেলো। নিজের যোগ্যতাকে ছোট করে না দেখো। তুমি যেন সবসময় মনে রাখো, তোমারও অনেক মূল্য আছে, তোমার স্বপ্নগুলোরও মূল্য আছে।
+
+                তুমি হয়তো জানো না, তোমাকে নিয়ে কত সাধারণ স্বপ্ন দেখি। এমন কোনো বিশেষ স্বপ্ন নয়, যেখানে অনেক আয়োজন থাকবে কিংবা পৃথিবীর সবকিছু আমাদের হয়ে যাবে। আমার স্বপ্নগুলো খুব সাধারণ। তোমার সঙ্গে অনেক গল্প করতে চাই। তোমার দিনের ছোট ছোট ঘটনাগুলো শুনতে চাই। তোমার পছন্দের বিষয়গুলো জানতে চাই। কখনো তোমার সঙ্গে বসে চা খেতে চাই। কখনো কোনো সুন্দর বিকেলে পাশাপাশি বসে আকাশ দেখতে চাই। কখনো কোনো কারণ ছাড়াই হাসতে চাই। আবার কখনো জীবনের গুরুত্বপূর্ণ বিষয়গুলো নিয়ে গভীর আলোচনা করতে চাই।
+
+                আমি চাই, আমরা শুধু একে অপরের ভালোবাসার মানুষই না, ভালো বন্ধুও হয়ে উঠি। এমন বন্ধু, যার কাছে নিজের মনের কথাগুলো বলতে কোনো দ্বিধা থাকবে না। এমন বন্ধু, যার সঙ্গে হাসাহাসি করা যাবে, মজা করা যাবে, ছোটখাটো বিষয় নিয়ে খুনসুটি করা যাবে। আবার প্রয়োজন হলে একে অপরের কথা মনোযোগ দিয়ে শোনাও যাবে।
+
+                ম্যাডাম, একটা বিষয় তোমাকে বলতে চাই। আমি তোমাকে ভালোবাসি বলেই তোমার ওপর নিজের সব ইচ্ছা চাপিয়ে দিতে চাই না। তোমার নিজের জীবন রয়েছে, নিজের পরিবার রয়েছে, নিজের স্বপ্ন রয়েছে, নিজের পছন্দ-অপছন্দ রয়েছে। আমি চাই তুমি সেগুলোকে গুরুত্ব দাও। তোমার নিজের পরিচয় তৈরি করো। জীবনে অনেক দূর এগিয়ে যাও। তোমার সফলতা যেন তোমার নিজের পরিশ্রমের ফল হয়। আর যদি কখনো তোমার সেই আনন্দের মুহূর্তগুলো ভাগ করে নেওয়ার সুযোগ পাই, তাহলে সেটাও আমার কাছে অনেক সুন্দর একটা অনুভূতি হবে।
+
+                তুমি যখন ভালো থাকো, তখন তোমার ভালো থাকার গল্প শুনতে আমার ভালো লাগে। তুমি যখন কোনো বিষয়ে আনন্দিত হও, তখন সেই আনন্দের কারণ জানতে ইচ্ছে করে। তুমি যখন কোনো স্বপ্নের কথা বলো, তখন মনে হয় তোমার সেই স্বপ্নগুলো একদিন সত্যি হোক। তুমি যখন কোনো বিষয়ে চিন্তিত থাকো, তখন তোমার চিন্তাগুলো বুঝতে ইচ্ছে করে।
+
+                আমি জানি, সবসময় সবকিছু আমার পক্ষে ঠিক করে দেওয়া সম্ভব হবে না। তোমার প্রতিটি সমস্যার সমাধান আমার জানা থাকবে না। তোমার প্রতিটি কষ্ট দূর করার ক্ষমতাও আমার থাকবে না। কিন্তু আমি অন্তত চেষ্টা করতে চাই, তোমার কথা মন দিয়ে শুনতে, তোমাকে বুঝতে এবং প্রয়োজনের সময় তোমার পাশে থাকতে।
+
+                তোমাকে নিয়ে আমার ভাবনাগুলো কখনো কখনো এত দীর্ঘ হয়ে যায় যে, নিজেই অবাক হয়ে যাই। একটা সাধারণ কথার মধ্যেও কত কিছু ভাবি! তোমার সঙ্গে কাটানো একটা সুন্দর মুহূর্ত মনে পড়লে আরও অনেক মুহূর্তের কথা মনে পড়ে। তোমার কোনো একটা কথা মনে পড়েলে তার সঙ্গে জড়িয়ে থাকা আরও অনেক কথা মনে পড়ে। এভাবেই ঠিক তোমার মনে একের পর এক গল্প তৈরি হতে থাকে।
+
+                ম্যাডাম, তুমি হয়তো আমার জীবনের প্রতিটি মুহূর্তের সাক্ষী নও, আমিও হয়তো তোমার জীবনের প্রতিটি মুহূর্তের সাক্ষী হতে পারব না। কিন্তু আমি চাই, আমাদের জীবনের যেসব মুহূর্ত একসঙ্গে কাটানোর সুযোগ হবে, সেগুলো যেন সুন্দর হয়। আমরা যেন একে অপরকে সময় দিতে শিখি, একে অপরের কথা বুঝতে শিখি এবং ছোট ছোট বিষয়গুলোকে গুরুত্ব দিতে শিখি।
+
+                কখনো যদি তোমার মনে হয় আমি তোমাকে বুঝতে পারছি না, তাহলে আমাকে বোঝানোর চেষ্টা করো। কখনো যদি আমার কোনো কথায় তোমার মন খারাপ হয়, তাহলে সেটা আমাকে জানিও। কখনো যদি আমার আচরণে কোনো পরিবর্তন প্রয়োজন হয়, সেটাও বলতে পারো। আমি চাই না আমাদের মধ্যে এমন কোনো দেয়াল তৈরি হোক, যার কারণে আমরা একে অপর কাছ থেকে নিজের অনুভূতিগুলো লুকিয়ে রাখব।
+
+                আমি চাই আমাদের সম্পর্কটা এমন হোক, যেখানে ভালোবাসার পাশাপাশি বিশ্বাস থাকবে, বিশ্বাসের পাশাপাশি সম্মান থাকবে, আর সম্মানের পাশাপাশি থাকবে একে অপরকে বোঝার আন্তরিক চেষ্টা।
+
+                আর জানো ম্যাডাম, তোমাকে নিয়ে আমার সবচেয়ে সুন্দর কল্পনাগুলোর একটি হলো, অনেক বছর পরেও যেন আমরা নিজেদের পুরোনো কথাগুলো মনে করে হাসতে পারি। মনে করতে পারি, একসময় কত ছোট ছোট বিষয় নিয়ে আমাদের কত গল্প হতো। কত সাধারণ কথাও আমাদের কাছে বিশেষ মনে হতো। কত অভিমান হতো, আবার কত সুন্দরভাবে সেই অভিমান দূর করার চেষ্টা করতাম।
+
+                আমি চাই, আমাদের সম্পর্কের প্রতিটি দিন নতুন কিছু শেখার সুযোগ হয়ে উঠুক। আমরা যেন একে অপরের ভুল থেকে শিখতে পারি, নিজেদের আরও ভালো মানুষ হিসেবে গড়ে তুলতে পারি এবং একে অপরের জীবনে ইতিবাচক প্রভাব রাখতে পারি।
+
+                ম্যাডাম, তোমাকে নিয়ে আমার কথাগুলো এখনো অনেক বাকি। তোমার হাসি নিয়ে বলতে চাই, তোমার রাগ নিয়ে বলতে চাই, তোমার অভিমান নিয়ে বলতে চাই, তোমার সঙ্গে কাটানো মুহূর্তগুলো নিয়ে বলতে চাই। বলতে চাই সেইসব কথা, যেগুলো হয়তো প্রতিদিন মনে আসে কিন্তু কখনো মুখে বলা হয়ে ওঠে না। বলতে চাই তোমাকে ঘিরে আমার ভবিষ্যতের স্বপ্ন, আমার ছোট ছোট ইচ্ছা এবং আমার মনের গভীরে জমে থাকা হাজারো অনুভূতির কথা।
+
+                ম্যাডাম, তোমাকে নিয়ে যখনই ভাবি, তখনই আমার মনে অনেকগুলো ছোট ছোট দৃশ্য ভেসে ওঠে। কখনো তোমার হাসিমুখ, কখনো তোমার রাগী মুখ, কখনো তোমার অভিমান, কখনো তোমার মিষ্টি করে কথা বলা, আবার কখনো এমন কিছু মুহূর্ত, যেগুলো হয়তো তোমার কাছে খুব সাধারণ ছিল, কিন্তু আমার কাছে সেগুলোর আলাদা একটা গুরুত্ব রয়েছে। জানো, মানুষের জীবনে কিছু অনুভূতি থাকে, যেগুলো কাউকে বোঝানো কঠিন। শুধু নিজের মনেই সেগুলো অনুভব করা যায়। তোমাকে নিয়ে আমার অনেক অনুভূতিও ঠিক তেমন।
+
+                তোমার হাসির কথা বলতে গেলে আমার কথাই শেষ হতে চাইবে না। কারণ তোমার হাসি নিয়ে আমার মনে আলাদা একটা ভালো লাগা রয়েছে। তুমি যখন মন খুলে হাসো, তখন তোমাকে অনেক সুন্দর লাগে। তোমার সেই হাসির মধ্যে একটা সরলতা রয়েছে, একটা মায়া রয়েছে, যেটা আমার কাছে খুব প্রিয়। কখনো কখনো মনে হয়, তোমার মুখে হাসি থাকুক, তোমার মন ভালো থাকুক, তোমার দিনগুলো সুন্দর কাটুক—এটুকুই যেন অনেক বড় একটা চাওয়া।
+
+                আমি চাই না তোমাকে সবসময় হাসিখুশি থাকার অভিনয় করতে হোক। তুমি মন খারাপ করতেই পারো, রাগ করতেই পারো, কাঁদতে ইচ্ছে করলে কাঁদতেও পারো। কারণ তুমি মানুষ, তোমারও অনুভূতি রয়েছে। তোমার প্রতিটি অনুভূতিকে স্বাভাবিকভাবে প্রকাশ করার অধিকার রয়েছে। আমি শুধু চাই, তোমার অনুভূতিগুলো যেন তোমার কাছে মূল্য পায় এবং তুমি যেন নিজের মনকে কখনো অবহেলা না করো।
+
+                তোমার রাগের কথাও বলতে হয়। ম্যাডাম, তুমি যখন রাগ করো, তখন হয়তো আমারও মন খারাপ হয়। কখনো বুঝতে পারি না কীভাবে তোমার রাগ কমাব, কীভাবে তোমাকে বোঝাব যে আমার উদ্দেশ্য তোমাকে কষ্ট দেওয়া ছিল না। কখনো হয়তো নিজের ভুল বুঝতে দেরি হয়ে যায়। কখনো আবার মনে হয়, তোমার জায়গায় থাকলে আমিও হয়তো একইভাবে কষ্ট পেতাম।
+
+                তবে একটা কথা বলি, তোমার রাগকে আমি কখনো তোমার ভালোবাসার পরিমাপ হিসেবে দেখতে চাই না। তুমি রাগ করলে তোমার রাগের কারণটা বুঝতে চাই। তুমি কোনো বিষয়ে কষ্ট পেলে সেটা জানতে চাই। কারণ আমার কাছে তোমার অনুভূতি গুরুত্বপূর্ণ। তোমার রাগের সময় তোমাকে জোর করে কথা বলাতে চাই না, আবার তোমার নীরবতাকে অবহেলাও করতে চাই না। আমি চাই, তুমি যখন প্রস্তুত হবে, তখন আমরা শান্তভাবে কথা বলব।
+
+                তোমার অভিমানের কথাও অনেক কিছু মনে করিয়ে দেয়। কখনো কখনো ছোট্ট একটা বিষয় থেকেও অভিমান তৈরি হয়। হয়তো আমি কোনো কথা বলতে ভুলে যাই, হয়তো তোমার প্রত্যাশা অনুযায়ী সময় দিতে পারি না, হয়তো তোমার মনের কোনো কথা বুঝতে পারি না। তখন তুমি কষ্ট পেতে পারো। আমি চাই, তোমার সেই কষ্টগুলো আমার কাছে অজানা না থাকুক।
+
+                ম্যাডাম, আমি চাই না আমাদের মধ্যে এমন কোনো অভিমান জমে থাকুক, যেটা একসময় বড় দূরত্ব তৈরি করবে। কোনো কিছু খারাপ লাগলে আমরা যেন সেটা নিয়ে কথা বলতে পারি। কেউ ভুল করলে যেন নিজের ভুল স্বীকার করতে পারে। কেউ কষ্ট পেলে যেন অন্যজন মন দিয়ে শুনতে পারে। কারণ একটা সম্পর্ক শুধু দুজন মানুষ একে অপরকে ভালোবাসে বলেই সুন্দর হয় না; সুন্দর হয় যখন দুজন মানুষ একে অপরের অনুভূতির দায়িত্বশীল হয়।
+
+                তোমার সঙ্গে আমার খুনসুটির মুহূর্তগুলোও অনেক প্রিয়। কখনো ছোট্ট একটা কথা নিয়ে হাসাহাসি, কখনো একে অপরকে একটু বিরক্ত করা, কখনো মজা করে কিছু বলা, আবার কখনো অকারণেই গল্প করা—সবকিছু মুহূর্তের মধ্যেই তো সম্পর্কের একটা সুন্দর দিক লুকিয়ে থাকে।
+
+                আমি চাই আমাদের মধ্যে এমন অনেক স্মৃতি তৈরি হোক, যেগুলো বহুদিন পরেও মনে পড়লে মুখে হাসি চলে আসে। এমন স্মৃতি, যেগুলোর জন্য কোনো বিশেষ দিনের প্রয়োজন হবে না। হয়তো একটা সাধারণ বিকেল, একটা সাধারণ ফোনকল, কিংবা কয়েক মিনিটের একটা কথোপকথনই একদিন অনেক মূল্যবান হয়ে উঠবে।
+
+                ম্যাডাম, কখনো কি তোমার এমন হয় যে কোনো একটা কথা বলতে ইচ্ছে করে, কিন্তু ঠিক কীভাবে বলবে বুঝতে পারো না? আমারও এমন হয়। তোমাকে অনেক কিছু বলতে ইচ্ছে করে, কিন্তু সবসময় সঠিক শব্দ খুঁজে পাই না। মনে হয়, তোমাকে যদি আমার মনের ভেতরটা একবার দেখাতে পারতাম, তাহলে হয়তো বুঝতে পারতে তোমাকে নিয়ে কত কথা জমে আছে।
+
+                আমি তোমাকে শুধু সুন্দর মুহূর্তের জন্য চাই না। আমি চাই তোমার বাস্তব জীবনটাকেও বুঝতে। তোমার দায়িত্ব, তোমার ব্যস্ততা, তোমার পড়াশোনা, তোমার স্বপ্ন, তোমার পরিবারের প্রতি ভালোবাসা—সবকিছুর প্রতি সম্মান রাখতে চাই। তোমার জীবনে এমন কোনো চাপ তৈরি করতে চাই না, যার কারণে তোমাকে নিজের প্রয়োজনীয় কাজ কিংবা স্বপ্ন থেকে দূরে সরে যেতে হয়।
+
+                তুমি যখন নিজের কোনো কাজে ব্যস্ত থাকবে, আমি চাই তুমি নিশ্চিন্তে সেই কাজ করতে পারো। তোমার সময়ের মূল্য আমি বুঝতে চাই। আবার যখন আমাদের কথা বলার সুযোগ হবে, তখন সেই সময়টুকু সুন্দরভাবে কাটাতে চাই। সম্পর্কের মধ্যে সময় দেওয়া গুরুত্বপূর্ণ, কিন্তু সেই সময়টা যেন দুজনের ইচ্ছা ও স্বাচ্ছন্দ্য থেকে আসে, সেটাও সমান গুরুত্বপূর্ণ।
+
+                জানো ম্যাডাম, তোমাকে নিয়ে আমার একটা ইচ্ছা আছে। আমি চাই তুমি আমার সঙ্গে এমনভাবে কথা বলো, যেন নিজের মনের কথা প্রকাশ করতে তোমার কোনো সংকোচ না থাকে। তোমার কোনো স্বপ্ন থাকলে আমাকে বলো, কোনো পরিকল্পনা থাকলে শোনাও, কোনো বিষয় নিয়ে ভয় বা দুশ্চিন্তা থাকলে সেটাও বলতে পারো। আমি হয়তো সবকিছু সমাধান করতে পারব না, কিন্তু তোমার কথা শুনতে এবং তোমাকে বুঝতে চেষ্টা করতে পারব।
+
+                তুমি যখন কোনো কিছু অর্জন করবে, আমি চাই তোমার আনন্দের অংশ হতে। তুমি যখন ব্যর্থ হবে, তখন তোমাকে মনে করিয়ে দিতে চাই যে একটি ব্যর্থতা দিয়ে মানুষের যোগ্যতা নির্ধারণ হয় না। তুমি আবার চেষ্টা করতে পারবে, আবার এগিয়ে যেতে পারবে। তোমার নিজের ওপর বিশ্বাস রাখাটা খুব জরুরি।
+
+                আর একটা কথা, ম্যাডাম, কখনো নিজের সৌন্দর্য, যোগ্যতা কিংবা অন্য কারও সঙ্গে তুলনা করে নিজেকে ছোট করে দেখবে না। তুমি তোমার নিজের মতো। তোমার ব্যক্তিত্ব, তোমার চিন্তাভাবনা, তোমার স্বপ্ন এবং তোমার নিজস্ব গুণগুলোই তোমাকে আলাদা করে তোলে। পৃথিবীর অন্য কারও মতো হওয়ার প্রয়োজন নেই। তুমি নিজের মতো করেই সুন্দর একজন মানুষ।
+
+                আমি চাই, তোমার জীবনে আনন্দের পাশাপাশি আত্মবিশ্বাসও থাকুক। তুমি নিজের সিদ্ধান্ত নিতে পারো, নিজের মতামত প্রকাশ করতে পারো এবং নিজের পছন্দের পথে এগিয়ে যেতে পারো। আমি তোমার পাশে থাকতে চাই একজন ভালোবাসার মানুষ হিসেবে, তোমার জীবনের নিয়ন্ত্রক হিসেবে নয়।
+
+                ম্যাডাম, মাঝে মাঝে ভাবি, আমাদের পরিচয়ের প্রতিটি মুহূর্ত যদি আবার ফিরে দেখা যেত, তাহলে কত কিছু নতুন করে অনুভব করতে পারতাম! কত সাধারণ কথার মধ্যে কত সুন্দর অনুভূতি লুকিয়ে ছিল, কত ছোট্ট মুহূর্ত যে কত বড় স্মৃতি হয়ে উঠেছে, সেটা হয়তো তখন আরও ভালোভাবে বুঝতে পারতাম।
+
+                তোমার সঙ্গে কাটানো প্রতিটি ভালো মুহূর্ত আমার কাছে মূল্যবান। আমি চাই না কোনো ভুল বোঝাবুঝির কারণে সেই মুহূর্তগুলোর গুরুত্ব হারিয়ে যাক। আমি চাই আমরা একে অপরের সঙ্গে এমনভাবে কথা বলি, যাতে কোনো সমস্যার সমাধান নীরবতা কিংবা দূরত্ব দিয়ে নয়, বরং বোঝাপড়া দিয়ে হয়।
+
+                তোমাকে নিয়ে আমার মায়া আছে, ভালোবাসা আছে, অভিমান আছে, অনেক স্বপ্ন আছে। কিন্তু এসব অনুভূতির পাশাপাশি তোমার প্রতি আমাদের সম্মানটাও যেন সবসময় অটুট থাকে, সেটাই আমার কাছে সবচেয়ে গুরুত্বপূর্ণ।
+
+                ম্যাডাম, তুমি যখন নিজের জীবনের কোনো গল্প আমাকে বলবে, আমি চাই সেটা মন দিয়ে শুনতে। তুমি যখন কোনো আনন্দের কথা বলবে, আমি চাই তোমার সঙ্গে আনন্দ ভাগ করে নিতে। তুমি যখন কোনো কষ্টের কথা বলবে, আমি চাই তোমাকে বিচার না করে তোমার অনুভূতিটা বুঝতে। তুমি যখন কোনো স্বপ্নের কথা বলবে, আমি চাই সেই স্বপ্নের কথা মনে রাখতে।
+
+                আর জানো, তোমাকে নিয়ে আমার আরও একটা সুন্দর কল্পনা আছে। একদিন আমরা দুজন নিজেদের জীবনের পুরোনো গল্পগুলো নিয়ে বসব। কে কখন কী বলেছিল, কোন কথায় কে রাগ করেছিল, কোন ঘটনায় দুজনেই হেসেছিলাম, কোন মুহূর্তে একে অপরকে সবচেয়ে বেশি বুঝতে পেরেছিলাম—সবকিছু নিয়ে অনেকক্ষণ গল্প করব।
+
+                হয়তো তখন বুঝতে পারব, একটা সম্পর্কের সৌন্দর্য বড় বড় উপহারে নয়, বরং ছোট ছোট যত্নে লুকিয়ে থাকে। একটা সময়মতো খোঁজ নেওয়া, একটা আন্তরিক প্রশ্ন, একটা মন দিয়ে শোনা কথা, একটা ভুলের জন্য আন্তরিক ক্ষমা চাওয়া—এসবই সম্পর্ককে সুন্দর করে তোলে।
+
+                ম্যাডাম, তোমাকে নিয়ে আমার গল্পে এখনো কত কিছু বলা বাকি! তোমার হাসি নিয়ে বলতে চাই, তোমার রাগ নিয়ে বলতে চাই, তোমার অভিমান নিয়ে বলতে চাই, তোমার সঙ্গে কাটানো মুহূর্তগুলো নিয়ে বলতে চাই। বলতে চাই সেইসব কথা, যেগুলো হয়তো প্রতিদিন মনে আসে কিন্তু কখনো মুখে বলা হয়ে ওঠে না। বলতে চাই তোমাকে ঘিরে আমার ভবিষ্যতের স্বপ্ন, আমার ছোট ছোট ইচ্ছা এবং আমার মনের গভীরে জমে থাকা হাজারো অনুভূতির কথা।
+
+                ম্যাডাম,
+
+                জানো, তোমাকে নিয়ে যখন ভবিষ্যতের কথা ভাবি, তখন আমার কল্পনায় অনেক সুন্দর সুন্দর মুহূর্ত ভেসে ওঠে। এমন কিছু মুহূর্ত, যেগুলো হয়তো এখনো বাস্তবে আসেনি, কিন্তু মনে মনে সেগুলো অনুভব করতে ভালো লাগে। কখনো ভাবি, একদিন আমরা দুজন পাশাপাশি বসে নিজেদের জীবনের গল্প বলব। কখনো ভাবি, দিনের শেষে অনেক ব্যস্ততা পেরিয়ে একে অপরের সঙ্গে কিছুটা সময় কাটাব। কখনো ভাবি, সারাদিনের ছোট ছোট ঘটনা তোমাকে বলব, আর তোমার কাছ থেকেও তোমার দিনের গল্প শুনব।
+
+                আমি জানি না ভবিষ্যৎ আমাদের জন্য কী লিখে রেখেছে। জীবন সবসময় আমাদের ইচ্ছামতো চলে না। অনেক সময় এমন পরিস্থিতি আসে, যেগুলো আমরা আগে থেকে কল্পনাও করতে পারি না। তবুও ভবিষ্যৎ নিয়ে স্বপ্ন দেখতে আমার ভালো লাগে। আর সেই স্বপ্নের অনেক জায়গাজুড়েই তুমি আছ।
+
+                ম্যাডাম, আমার কাছে ভালোবাসার সবচেয়ে সুন্দর দিক হলো, দুজন মানুষ একে অপরের পাশে থেকে নিজেদের জীবনকে আরও সুন্দর করার চেষ্টা করবে। একজনের স্বপ্ন অন্যজনের কাছে গুরুত্ব পাবে। একজনের সফলতায় অন্যজন আনন্দিত হবে। একজনের ব্যর্থতায় অন্যজন তাকে ছোট করবে না। বরং দুজন মিলে নতুন করে চেষ্টা করার সাহস খুঁজে নেবে।
+
+                আমি চাই, তুমি জীবনে অনেক বড় হও। তোমার নিজের একটা পরিচয় তৈরি হোক। তুমি যেসব স্বপ্ন দেখো, সেগুলো পূরণ করার সুযোগ পাও। তোমার পরিশ্রমের সুন্দর ফলাফল তুমি নিজেই উপভোগ করো। তোমার পরিবার তোমাকে নিয়ে গর্ব করোক। আর তোমার জীবনের সেই সুন্দর মুহূর্তগুলোতে আমি যদি পাশে থাকার সুযোগ পাই, তাহলে সেটাই হবে অনেক বড় পাওয়া মনে করব।
+
+                কখনো কখনো ভাবি, একদিন হয়তো আমাদের জীবনে অনেক ব্যস্ততা থাকবে। কাজ থাকবে, দায়িত্ব থাকবে, অনেক পরিকল্পনা থাকবে। হয়তো আগের মতো সারাক্ষণ কথা বলার সুযোগ থাকবে না। কিন্তু আমি চাই, ব্যস্ততার মধ্যেও আমরা একে অপরের গুরুত্ব বুঝতে পারি। কয়েক মিনিটের একটা আন্তরিক কথোপকথনও যেন আমাদের কাছে মূল্যবান থাকে।
+
+                আমি চাই না ভালোবাসা মানেই সারাক্ষণ ফোনে কথা বলা, প্রতিটি মুহূর্তের হিসাব দেওয়া কিংবা সবসময় একে অপরকে কাছে উপস্থিত থাকা। আমি চাই ভালোবাসার মধ্যে বিশ্বাস থাকুক। এমন বিশ্বাস, যেখানে একজন ব্যস্ত থাকলে অন্যজন সেটা বুঝতে পারবে। একজন নিজের কাজে সময় দিলে অন্যজন সেটাকে সম্মান করবে। আর যখন দুজন একসঙ্গে সময় কাটাবে, তখন সেই সময়টুকু মন থেকে উপভোগ করবে।
+
+                ম্যাডাম, তোমাকে নিয়ে আমার অনেক ছোট ছোট স্বপ্ন রয়েছে।
+
+                একদিন তোমার সঙ্গে কোথাও ঘুরতে যেতে চাই। এমন কোনো জায়গায়, যেখানে চারপাশটা সুন্দর, পরিবেশটা শান্ত, আর আমাদের হাতে থাকবে অনেকটা সময়। সেখানে বসে গল্প করব, হাসব, ছবি তুলব, নিজেদের পছন্দের বিষয়গুলো নিয়ে কথা বলব। হয়তো কোনো একসময় চুপচাপ পাশাপাশি বসে থাকব। তখন কোনো বিশেষ কথা বলার প্রয়োজন হবে না, শুধু একসঙ্গে সময় কাটানোর অনুভূতিটাই সুন্দর লাগবে।
+
+                তোমার সঙ্গে একদিন বৃষ্টির গল্প করতে চাই। বৃষ্টি পড়লে তুমি কী ভাবো, বৃষ্টি তোমার কেমন লাগে, বৃষ্টির দিনে তোমার কী করতে ইচ্ছে করে—এসব জানতে চাই। হয়তো এক কাপ চা হাতে নিয়ে বৃষ্টির শব্দ শুনব, আর তুমি তোমার ছোটবেলার কোনো গল্প বলতে শুরু করবে। আমি মন দিয়ে শুনব। তোমার বলা সাধারণ গল্পগুলোও আমার কাছে অসাধারণ মনে হবে।
+
+                তোমার সঙ্গে একদিন অনেক দূরের ভবিষ্যৎ নিয়েও কথা বলতে চাই। আমরা জীবনে কী হতে চাই, কী অর্জন করতে চাই, কীভাবে নিজেদের পরিবারকে ভালো রাখতে চাই, কীভাবে দায়িত্বগুলো পালন করতে চাই—এসব নিয়ে আলোচনা করতে চাই।
+
+                আমি চাই, আমাদের স্বপ্নগুলো শুধু কথার মধ্যে সীমাবদ্ধ না থাকুক। আমরা নিজেদের লক্ষ্য ঠিক করি, পরিশ্রম করি, একে অপরকে উৎসাহ দিই এবং নিজেদের যোগ্যতায় সামনে এগিয়ে যাই।
+
+                ম্যাডাম, একটা কথা তোমাকে খুব মন থেকে বলতে চাই। আমি চাই না কখনো তুমি ভাবো যে ভালোবাসার জন্য তোমাকে নিজের স্বপ্ন বিসর্জন দিতে হবে। তোমার পড়াশোনা, তোমার কাজ, তোমার পরিবার, তোমার ব্যক্তিগত ইচ্ছা—সবকিছুরই গুরুত্ব রয়েছে। আমি চাই তুমি নিজের জীবনকে সুন্দরভাবে গড়ে তোলো। তোমার জীবনের প্রতিটি সিদ্ধান্তে যেন তুমি আত্মবিশ্বাসী হতে পারো।
+
+                আমি তোমার জীবনে এমন একজন মানুষ হতে চাই, যার সঙ্গে কথা বললে তুমি উৎসাহ পাও। যে তোমার স্বপ্নকে ছোট করে দেখবে না। যে তোমার সফলতাকে নিজের অহংকারের বিষয় বানাবে না, বরং তোমার পরিশ্রমের জন্য তোমাকে অভিনন্দন জানাবে। যে তোমার ভুল হলে সেটা বুঝিয়ে বলবে, কিন্তু তোমাকে অপমান করবে না।
+
+                আমি জানি, জীবনের পথে সবসময় সুখের দিন আসবে না। কখনো অর্থনৈতিক সমস্যা আসতে পারে, কখনো পারিবারিক দায়িত্ব বাড়তে পারে, কখনো কাজের চাপ থাকবে, কখনো নিজেদের মধ্যেও মতের অমিল তৈরি হতে পারে। কিন্তু আমি চাই, আমরা যেন প্রতিটি পরিস্থিতিতে পরস্পরের সঙ্গে সম্মানজনক আচরণ করি।
+
+                কোনো সমস্যার সময় একে অপরকে দোষারোপ না করে সমস্যাটাকে বোঝার চেষ্টা করি। কোনো বিষয়ে মতের অমিল হলে একে অপরের কথা শুনি। রাগের মুহূর্তে এমন কোনো কথা না বলি, যেটা পরে দুজনের মনেই কষ্ট তৈরি করবে।
+
+                ম্যাডাম, আমি চাই আমাদের ভালোবাসা সময়ের সঙ্গে আরও পরিণত হোক। শুধু আবেগের মধ্যে সীমাবদ্ধ না থেকে বাস্তব জীবনের দায়িত্বগুলোও বুঝতে শিখুক। আমরা যেন একে অপরের ভালো দিকগুলোকে উৎসাহিত করি এবং নিজেদের দুর্বলতাগুলো নিয়ে কাজ করতে সাহায্য করি।
+
+                তোমাকে নিয়ে আমার একটা স্বপ্ন হলো, একদিন আমরা দুজন নিজেদের জীবনের দিকে তাকিয়ে সন্তুষ্ট হতে পারব। বলতে পারব, আমরা অনেক কিছু শিখেছি, অনেক কিছু বুঝেছি, নিজেদের ভুল থেকে অনেক শিক্ষা নিয়েছি এবং একে অপরের প্রতি সম্মান বজায় রাখার চেষ্টা করেছি।
+
+                তোমার সঙ্গে এমন একটা সম্পর্ক চাই, যেখানে কোনো কিছু লুকিয়ে রাখার প্রয়োজন হবে না। যেখানে বিশ্বাস থাকবে, কিন্তু অযথা সন্দেহ থাকবে না। যেখানে ভালোবাসা থাকবে, কিন্তু স্বাধীনতা কেড়ে নেওয়ার চেষ্টা থাকবে না। যেখানে অভিমান থাকবে, কিন্তু অপমান থাকবে না। যেখানে দুজনের মতামত আলাদা হলেও একে অপরের প্রতি সম্মান কমবে না।
+
+                মাঝে মাঝে ভাবি, আমাদের ভবিষ্যতের কোনো এক সাধারণ দিনে তুমি হয়তো আমাকে কোনো পুরোনো কথা মনে করিয়ে দেবে। বলবে, মনে আছে, একসময় তুমি আমাকে কত লম্বা লম্বা মেসেজ লিখতে? তখন হয়তো আমি হাসব এবং বলব, তোমাকে নিয়ে আমার মনের কথাগুলো কখনো ছোট করে বলা সম্ভব ছিল না।
+
+                তুমি হয়তো তখনও বুঝতে পারবে না, তোমাকে নিয়ে এই এত এত কথা লেখার পেছনে কতটা অনুভূতি জমে ছিল। কতবার একটা বাক্য লিখে আবার মুছে ফেলেছি। কতবার ভেবেছি, এই কথাটা লিখলে তুমি কী ভাববে। কতবার মনে হয়েছে, তোমাকে আরও কিছু বলা দরকার।
+
+                ম্যাডাম, আমি চাই আমাদের জীবনে এমন অনেক সাধারণ দিন আসুক, যেগুলো একসময় অসাধারণ স্মৃতি হয়ে থাকবে। কোনো বিশেষ উপলক্ষ ছাড়াই একে অপরকে খোঁজ নেওয়া, কোনো কারণ ছাড়াই হাসানো, কোনো সমস্যার সময় মন দিয়ে কথা শোনা, একে অপরের পছন্দের বিষয় মনে রাখা—এসব ছোট ছোট কাজের মধ্যেই আমি সুন্দর ভবিষ্যতের ছবি দেখতে পাই।
+
+                আমি চাই, তুমি যখন নিজের ভবিষ্যৎ নিয়ে কোনো পরিকল্পনা করবে, তখন নিজের শক্তি ও যোগ্যতার ওপর বিশ্বাস রাখবে। কখনো কোনো ব্যর্থতায় ভেঙে পড়বে না। কখনো নিজের স্বপ্নকে অসম্ভব ভেবে ছেড়ে দেবে না। তুমি চেষ্টা করবে, শিখবে, আবার চেষ্টা করবে। আর তোমার এই পথচলায় তোমাকে উৎসাহ দেওয়ার মতো একজন মানুষ হয়ে থাকতে চাই।
+
+                তোমাকে নিয়ে আমার স্বপ্নগুলো অনেক বড়, কিন্তু সেই স্বপ্নগুলোর ভিত্তি খুব সাধারণ—বিশ্বাস, সম্মান, যত্ন, বোঝাপড়া এবং দুজনের আন্তরিক ইচ্ছা।
+
+                আর জানো ম্যাডাম, ভবিষ্যতে আমরা যত ব্যস্তই হয়ে যাই না কেন, আমি চাই আমরা যেন নিজেদের জন্য একটু সময় বের করতে পারি। একে অপরের দিনের গল্প শুনতে পারি। নতুন কিছু শিখতে পারি। পুরোনো স্মৃতিগুলো মনে করতে পারি। নিজেদের ভুল নিয়ে হাসতে পারি। আর জীবনের প্রতিটি নতুন অভিজ্ঞতা থেকে কিছু না কিছু শিখতে পারি।
+
+                ম্যাডাম,
+
+                জানো, তোমার সঙ্গে কথা বলার একটা আলাদা অনুভূতি আছে, যেটা হয়তো তোমাকে কখনো ঠিকভাবে বোঝাতে পারিনি। দিনের মধ্যে কত কাজ থাকে, কত ব্যস্ততা থাকে, কত মানুষের সঙ্গে কথা বলতে হয়, কত কিছু নিয়ে ভাবতে হয়। কিন্তু এত কিছুর মাঝেও তোমার সঙ্গে একটু কথা বলার ইচ্ছাটা আলাদা। কখনো মনে হয়, আজ তোমাকে অনেক কিছু বলব। সারাদিনে কী কী হলো, কোন বিষয়টা ভালো লাগল, কোন বিষয়টা খারাপ লাগল, কী নিয়ে হাসলাম, কী নিয়ে চিন্তা করলাম—সবকিছু তোমাকে জানাব।
+
+                কিন্তু যখন তোমার সঙ্গে কথা বলার সুযোগ আসে, তখন অনেক সময় সব কথা যেন এলোমেলো হয়ে যায়। যে কথাগুলো এতক্ষণ মনে মনে সাজিয়ে রেখেছিলাম, সেগুলো আর ঠিকমতো বলা হয় না। কখনো সাধারণ কিছু কথা বলেই সময় শেষ হয়ে যায়। তারপর কথা শেষ হওয়ার পর আবার মনে পড়ে, আরে, তোমাকে তো আরও কত কিছু বলার ছিল!
+
+                ম্যাডাম, তোমার একটা মেসেজের জন্য অপেক্ষা করার অনুভূতিটাও আমার কাছে অন্যরকম। ফোনের স্ক্রিনে তোমার নামটা দেখলে মনের মধ্যে যে ভালো লাগা তৈরি হয়, সেটা হয়তো তুমি বুঝতে পারবে না। কখনো কোনো কাজের মধ্যে থাকলেও মনে হয়, একটু দেখি তোমার কোনো মেসেজ এসেছে কি না। কখনো ফোন হাতে নিয়ে পুরোনো কথাগুলো পড়তে ইচ্ছে করে। কখনো আমাদের আগের কোনো কথোপকথন মনে পড়ে যায়।
+
+                তোমার একটা সাধারণ প্রশ্ন—কেমন আছো? কী করছো? খেয়েছো? দিন কেমন কাটل?—এসব কথাও আমার কাছে অনেক মূল্যবান মনে হয়। কারণ কথাগুলো শুধু কয়েকটি শব্দ নয়, এগুলোর মধ্যে খোঁজ নেওয়ার একটা সুন্দর অনুভূতি রয়েছে।
+
+                আমি জানি, প্রতিটি মুহূর্তে তোমার পক্ষে আমার সঙ্গে কথা বলা সম্ভব নয়। তোমারও অনেক কাজ থাকে, অনেক দায়িত্ব থাকে, নিজের জন্য সময়ের প্রয়োজন হয়। আমি চাই তুমি সেগুলো সুন্দরভাবে সামলাও। তোমার ব্যস্ততার প্রতি আমার সম্মান রয়েছে। তবে যখন আমাদের কথা বলার সুযোগ হয়, তখন সেই সময়টুকু যেন আন্তরিকতায় ভরা থাকে, এটাই আমার চাওয়া।
+
+                কখনো কখনো তোমার সঙ্গে কথা বলতে বলতে মনে হয়, সময়টা একটু থেমে থাকুক। আরও কিছুক্ষণ গল্প করি, আরও কিছুক্ষণ হাসি, আরও কিছুক্ষণ একে অপরের কথা শুনি। কিন্তু সময় তো কারও জন্য থেমে থাকে না। কথোপকথন শেষ হয়, দুজন আবার নিজেদের কাজে ফিরে যাই। তারপরও সেই কথাগুলোর রেশ অনেকক্ষণ মনের মধ্যে থেকে যায়।
+
+                ম্যাডাম, তোমার সঙ্গে কথা বলার পর কখনো কখনো নিজের অজান্তেই আমাদের কথাগুলো আবার মনে করি। ভাবি, তুমি ওই কথাটা কেন বললে, আমি ওই কথার কী উত্তর দিয়েছিলাম, তুমি তখন হাসছিলে কি না, আমার কোনো কথায় তোমার মন ভালো হয়েছিল কি না। এসব ভাবতে ভাবতেই কখনো নিজের অজান্তে হেসে ফেলি।
+
+                তোমার সঙ্গে কথা বলার আনন্দটা শুধু মিষ্টি কথার মধ্যে সীমাবদ্ধ নয়। কখনো আমরা একে অপরের সঙ্গে মজা করি, কখনো কোনো বিষয় নিয়ে তর্ক করি, কখনো একে অপরের কথা বুঝতে একটু সময় লাগে। এসবের মধ্যেও একটা নিজস্বতা রয়েছে। আমি চাই আমাদের কথোপকথনে এমন স্বাভাবিকতা থাকুক, যেখানে সবসময় বিশেষ কিছু বলার প্রয়োজন হবে না। সাধারণ কথাগুলোও যেন সুন্দর লাগে।
+
+                কখনো তোমাকে খুব মিস করি। তখন মনে হয়, ইশ্, যদি এখন তোমার সঙ্গে একটু কথা বলতে পারতাম! যদি তোমাকে দিনের গল্পগুলো বলতে পারতাম! যদি জানতে পারতাম তোমার দিনটা কেমন কাটছে! কিন্তু সবসময় তো সব ইচ্ছা পূরণ হয় না। তাই অপেক্ষা করতে শিখতে হয়। নিজের কাজ করতে হয়, নিজের দায়িত্ব পালন করতে হয় এবং উপযুক্ত সময়ে আবার কথা বলার সুযোগের জন্য অপেক্ষা করতে হয়।
+
+                ম্যাডাম, দূরত্ব কখনো শুধু দুই জায়গার মাঝখানে থাকে না। কখনো ব্যস্ততার কারণে কথা কম হয়, কখনো সময় মেলে না, কখনো পরিস্থিতি আমাদের নিজেদের মতো করে চলতে বাধ্য করে। কিন্তু আমি চাই, আমাদের মধ্যে দূরত্ব তৈরি হলেও যেন বোঝাপড়াটা হারিয়ে না যায়।
+
+                আমি চাই না তোমাকে বারবার প্রমাণ করতে হোক যে তুমি আমাকে ভালোবাসো। আমিও চাই না প্রতিটি কথার মধ্যে ভালোবাসার পরীক্ষা নিতে। আমি চাই আমাদের সম্পর্কের ভিত্তি হোক বিশ্বাস। তুমি তোমার মতো করে সময় কাটাবে, নিজের কাজ করবে, নিজের বন্ধুদের সঙ্গে কথা বলবে, নিজের পছন্দের কাজ করবে। আমিও আমার দায়িত্ব পালন করব। তারপর যখন দুজন কথা বলব, তখন মন খুলে কথা বলব।
+
+                তোমার অনুপস্থিতিতেও তোমার প্রতি ভালোবাসা ও সম্মান যেন বজায় থাকে। তোমার সঙ্গে কথা না হলেও যেন তোমার সম্পর্কে ভালো ধারণা রাখতে পারি। কোনো অকারণ সন্দেহ কিংবা ভুল ধারণা যেন আমাদের সুন্দর মুহূর্তগুলো নষ্ট না করে।
+
+                জানো ম্যাডাম, তোমার সঙ্গে কথা বলার অপেক্ষায় থাকতে থাকতে কখনো অনেক পুরোনো কথাও মনে পড়ে যায়। মনে হয়, একসময় আমাদের কথাগুলো কীভাবে শুরু হয়েছিল! কীভাবে ধীরে ধীরে আমরা একে অপরের সঙ্গে পরিচিত হয়েছি! কীভাবে সাধারণ কথাগুলো একসময় বিশেষ হয়ে উঠেছে! কীভাবে তোমাকে নিয়ে ভাবার অভ্যাস তৈরি হয়েছে!
+
+                আমি মাঝে মাঝে ভাবি, মানুষের জীবনে কিছু সম্পর্ক এমন হয়, যেগুলোকে কোনো একটি দিনের মাধ্যমে ব্যাখ্যা করা যায় না। এগুলো তৈরি হয় অসংখ্য ছোট ছোট মুহূর্তের মাধ্যমে। প্রতিদিনের কথাবার্তা, একে অপরের খোঁজ নেওয়া, মনের কথা ভাগ করে নেওয়া, ভুল বোঝাবুঝি দূর করা, একে অপরকে সময় দেওয়া—সবকিছুই মধ্য দিয়েই সম্পর্কের গভীরতা তৈরি হয়।
+
+                তোমাকে নিয়ে আমারও অনেক ছোট ছোট অনুভূতি জমে আছে। হয়তো কোনো একদিন তুমি খুব সাধারণভাবে একটা কথা বলেছিলে, কিন্তু সেটাই আমার মনে রয়ে গেছে। হয়তো কোনো একদিন তোমার মন খারাপ ছিল, আর আমি তোমাকে ভালো করার চেষ্টা করেছিলাম। হয়তো কোনো একদিন তুমি আমাকে এমন কিছু বলেছিলে, যেটা শুনে আমার অনেক ভালো লেগেছিল। এই ছোট ছোট মুহূর্তগুলোই আমার কাছে অনেক মূল্যবান।
+
+                ম্যাডাম, কখনো যদি তোমার মনে হয় আমি তোমাকে যথেষ্ট সময় দিচ্ছি না, তাহলে আমাকে জানাবে। কখনো যদি আমার কোনো আচরণ তোমার কাছে অবহেলার মতো মনে হয়, তাহলে সেটাও বলবে। আমি চাই না তুমি চুপচাপ কষ্ট পাও। আবার আমিও চাই আমার কোনো অনুভূতি থাকলে সেটা সুন্দরভাবে তোমাকে বলতে পারি।
+
+                আমরা দুজনই তো মানুষ। আমাদের ভুল হবে, কখনো মন খারাপ হবে, কখনো নিজেদের মধ্যে মতের অমিল হবে। কিন্তু আমি চাই, সেই বিষয়গুলো যেন আমাদের একে অপরকে বোঝার সুযোগ তৈরি করে। আমরা যেন শুধু কে ঠিক আর কে ভুল, সেই হিসাব না করে বুঝতে চেষ্টা করি কোন কথায় কার কষ্ট হয়েছে এবং কীভাবে বিষয়টা ভালোভাবে সমাধান করা যায়।
+
+                তোমাকে নিয়ে আমার একটা বিশেষ ইচ্ছা আছে। আমি চাই, তুমি আমার সঙ্গে কথা বলার সময় কখনো নিজেকে একা মনে না করো। তোমার কোনো আনন্দের ঘটনা থাকলে আমাকে বলতে পারো, কোনো চিন্তা থাকলে ভাগ করে নিতে পারো, কোনো বিষয়ে মতামত চাইলে আলোচনা করতে পারো। আমি সবসময় সঠিক উত্তর দিতে পারব এমন নিশ্চয়তা নেই, কিন্তু তোমার কথা মন দিয়ে শোনার চেষ্টা থাকবে।
+
+                তোমার জীবনে এমন অনেক মানুষ থাকবে, যাদের সঙ্গে তোমার বিভিন্ন বিষয়ে কথা হবে। প্রত্যেকের সঙ্গে সম্পর্কের ধরন আলাদা হবে। আমি চাই আমাদের সম্পর্কের মধ্যে এমন একটা সুন্দর জায়গা থাকুক, যেখানে বন্ধুত্ব, ভালোবাসা, বিশ্বাস এবং সম্মান একসঙ্গে থাকবে।
+
+                ম্যাডাম, কখনো কখনো তোমাকে বলতে ইচ্ছে করে, তুমি হয়তো বুঝতে পারো না তোমার ছোট্ট একটা উপস্থিতি আমার দিনের কতটা সুন্দর অংশ হয়ে উঠতে পারে। তোমার একটা আন্তরিক কথা অনেক সময় মন ভালো করে দিতে পারে। তোমার সঙ্গে কিছুক্ষণ গল্প করলে অনেক সাধারণ দিনও একটু বিশেষ মনে হয়।
+
+                তবে আমি চাই না আমার ভালো থাকার সম্পূর্ণ দায়িত্ব তোমার ওপর থাকুক। আমার নিজের জীবন, নিজের দায়িত্ব এবং নিজের ভালো থাকার চেষ্টাও থাকবে। তোমারও থাকবে। আমরা দুজন যেন নিজেদের জীবনকে সুন্দরভাবে গড়ে তোলার পাশাপাশি একে অপরের জীবনে আনন্দের কারণ হতে পারি।
+
+                তোমাকে মিস করার অনুভূতিটাও কখনো কখনো অদ্ভুত। কথা শেষ হওয়ার পরও মনে হয়, আরও কিছুক্ষণ কথা বললে ভালো হতো। দিনের কোনো একটা সময়ে তোমার কথা মনে পড়ে। কোনো সুন্দর দৃশ্য দেখলে মনে হয়, তোমাকে দেখাতে পারলে ভালো লাগতো। কোনো মজার ঘটনা ঘটলে মনে হয়, তোমাকে বললে তুমি হয়তো হেসে উঠতে। কোনো নতুন কিছু জানতে পারলে মনে হয়, তোমার সঙ্গে বিষয়টা ভাগ করে নিই।
+
+                এইভাবেই তুমি আমার দৈনন্দিন ভাবনার অনেকগুলো ছোট ছোট জায়গায় জড়িয়ে আছ।
+
+                আর জানো ম্যাডাম, আমি চাই আমাদের কথাগুলো কখনো শুধু প্রয়োজনের মধ্যে সীমাবদ্ধ না থাকুক। শুধু কিছু জানতে হবে বলে কথা বলা নয়, শুধু কোনো সমস্যার সমাধান করতে হবে বলে কথা বলা নয়। কখনো কোনো কারণ ছাড়াই গল্প হোক। কখনো একই কথা বারবার বলেও বিরক্তি না আসুক। কখনো দিনের শেষে শুধু একে অপরের খবর নেওয়াটাই যথেষ্ট মনে হোক।
+
+                আমি চাই, আমাদের জীবনের গল্পে এমন অনেক সাধারণ মুহূর্ত জমা হোক, যেগুলো একসময় আমাদের কাছে সবচেয়ে মূল্যবান স্মৃতি হয়ে উঠবে।
+
+                তোমাকে নিয়ে আমার এই অনুভূতিগুলোর পাশাপাশি আরও একটি বিষয় প্রতিদিন মনে হয়—আমি কি তোমাকে যথেষ্ট বুঝতে পারছি? তোমার মনের কথাগুলো কি ঠিকভাবে শুনতে পারছি? তোমার ছোট ছোট ইচ্ছাগুলো কি মনে রাখতে পারছি? তোমার কোনো কষ্ট আমার অজান্তে থেকে যাচ্ছে কি না? কারণ আমি চাই না শুধু নিজের অনুভূতিগুলো প্রকাশ করেই থেমে যেতে। আমি চাই তোমার অনুভূতিগুলোকেকেও সমান গুরুত্ব দিতে।
+
+                ম্যাডাম, তোমাকে নিয়ে আমার কথা এখনো অনেক বাকি। তোমার সঙ্গে কাটানো স্মৃতিগুলোর কথা, তোমার প্রতি আমার কৃতজ্ঞতার কথা, আমাদের ছোট ছোট অভিমানের কথা, তোমার কাছে ক্ষমা চাওয়ার মতো মুহূর্তগুলোর কথা এবং তোমাকে আরও ভালোভাবে বোঝার ইচ্ছার কথা—সবকিছুই আমার মনের মধ্যে জমে রয়েছে।
+
+                ম্যাডাম,
+
+                এতক্ষণ তোমাকে নিয়ে কত কথা বললাম, কত অনুভূতির কথা লিখলাম, কত স্বপ্নের কথা জানালাম, কত অভিমান, কত মায়া, কত ভালোবাসার কথা প্রকাশ করলাম। তবুও মনে হচ্ছে, এখনো অনেক কিছু বলা বাকি। মনে হচ্ছে, এতগুলোর শব্দের পরেও আমার মনের আসল কথাগুলো পুরোপুরি প্রকাশ করতে পারিনি। কারণ কিছু অনুভূতি আছে, যেগুলো হাজার হাজার শব্দ দিয়েও সম্পূর্ণ বোঝানো যায় না।
+
+                তোমাকে নিয়ে আমার এই লেখাটা শুধু একটা চিঠি নয়। এটা আমার মনের মধ্যে জমে থাকা অসংখ্য কথার প্রকাশ। যেসব কথা হয়তো প্রতিদিন তোমাকে বলা হয় না, যেসব অনুভূতি হয়তো সবসময় প্রকাশ করা সম্ভব হয় না, সেসবকিছু একসঙ্গে তোমাকে জানানোর একটা ছোট্ট চেষ্টা।
+
+                ম্যাডাম, আমি জানি না তুমি এই লেখাটা কতবার পড়বে। হয়তো একবার পড়বে, হয়তো কয়েকবার পড়বে, আবার হয়তো কোনো একদিন হঠাৎ করে পুরোনো কথাগুলো মনে করে আবার পড়বে। কিন্তু আমি চাই, যখনই পড়বে, তখন যেন বুঝতে পারো—কেউ একজন তোমাকে নিয়ে এতগুলো কথা লিখেছিল শুধু তোমাকে নিজের অনুভূতিগুলো বোঝানোর জন্য।
+
+                আমি চাই তুমি জানো, তোমাকে ভালোবাসি বলার অর্থ আমার কাছে শুধু তোমাকে নিজের জীবনে পাওয়া নয়। তোমাকে সম্মান করা, তোমার মতামতকে গুরুত্ব দেওয়া, তোমার স্বপ্নকে সম্মান করা, তোমার ভালো থাকা কামনা করা এবং তোমার নিজের মতো করে বেঁচে থাকার অধিকারকে মূল্য দেওয়াও ভালোবাসার অংশ।
+
+                আমি চাই না তুমি কখনো আমার ভালোবাসাকে কোনো বোঝা মনে করো। তোমার ওপর আমার কোনো অযৌক্তিক প্রত্যাশা চাপিয়ে দিতে চাই না। আমি চাই তুমি নিজের ইচ্ছায়, নিজের অনুভূতি থেকে আমার পাশে থাকো। আমাদের সম্পর্কটা যেন দুজনের কাছেই শান্তি, আনন্দ ও বিশ্বাসের জায়গা হয়ে ওঠে।
+
+                ম্যাডাম, একটা কথা হয়তো তোমাকে অনেকবার বলা হয়েছে, তবুও আবার বলতে ইচ্ছে করছে—তুমি আমার কাছে অনেক গুরুত্বপূর্ণ। তোমার সঙ্গে কথা বলা, তোমার খোঁজ নেওয়া, তোমার গল্প শোনা, তোমার আনন্দের মুহূর্তগুলো ভাগ করে নেওয়া—এসব আমাদের কাছে অনেক সুন্দর অনুভূতি।
+
+                কখনো যদি আমার কোন কথায় তোমার মন খারাপ হয়ে থাকে, তাহলে আমি আন্তরিকভাবে দুঃখিত। কখনো যদি তোমার অনুভূতিকে ঠিকভাবে বুঝতে না পেরে থাকি, তাহলে আমাকে ক্ষমা করে দিও। কখনো যদি তোমার প্রত্যাশা অনুযায়ী আচরণ করতে না পেরে থাকি, তাহলে আমাকে বুঝিয়ে বলো। আমি চাই নিজের ভুলগুলো বুঝতে এবং সেগুলো থেকে শিখতে।
+
+                আমি চাই না আমাদের মধ্যে কোনো অভিমান জমে থেকে একসময় দূরত্ব তৈরি করুক। কোনো কিছু খারাপ লাগলে আমরা কথা বলব। ভুল হলে ক্ষমা চাইব। রাগ হলে কিছুটা সময় নিয়ে শান্ত হব। তারপর আবার একে অপরের কথা বুঝতে চেষ্টা করতে পারব। কারণ আমার কাছে সম্পর্কের সৌন্দর্য হলো, দুজন মানুষ নিজেদের ভুল বুঝতে পারবে এবং একে অপরকে সম্মান করতে শিখবে।
+
+                ম্যাডাম, তোমাকে নিয়ে আমার সবচেয়ে বড় স্বপ্নগুলোর একটি হলো, তোমার জীবনে অনেক সুন্দর দিন আসুক। তুমি নিজের পছন্দের কাজগুলো করতে পারো। তোমার পড়াশোনা ও ভবিষ্যৎ সুন্দর হোক। তোমার পরিবার ভালো থাকুক। তোমার মুখে হাসি থাকুক। তুমি নিজের জীবনে এমন কিছু অর্জন করো, যেগুলো নিয়ে একদিন নিজেই গর্ব করতে পারবে।
+
+                তোমার কোনো স্বপ্ন পূরণ হলে আমি চাই তুমি মন খুলে আনন্দ করো। কোনো কঠিন সময় এলে নিজের ওপর বিশ্বাস রেখো। কখনো নিজেকে অন্য কারও সঙ্গে তুলনা করে ছোট করে দেখো না। তোমার জীবন তোমার নিজের, তোমার পথচলা তোমার নিজের। ধীরে ধীরে হলেও নিজের লক্ষ্যের দিকে এগিয়ে যেয়ো।
+
+                আমি চাই তোমার সঙ্গে জীবনের অনেক সুন্দর মুহূর্ত ভাগ করে নিতে। একসঙ্গে হাসতে, গল্প করতে, নতুন জায়গা দেখতে, নতুন অভিজ্ঞতা অর্জন করতে এবং নিজেদের জীবনের গল্পগুলো একে অপরকে বলতে।
+
+                কোনো একদিন হয়তো আমরা দুজন বসে পুরোনো দিনের কথা মনে করব। মনে করব, কীভাবে আমাদের কথাবার্তা শুরু হয়েছিল, কীভাবে ছোট ছোট বিষয় নিয়ে গল্প হতো, কীভাবে একে অপরকে বুঝতে শিখেছিলাম। হয়তো কোনো পুরোনো মেসেজ পড়ে হাসব। হয়তো কোনো অভিমানের কথা মনে করে বলব, সেদিন বিষয়টা নিয়ে এত রাগ করার কী ছিল!
+
+                আমি চাই আমাদের ভবিষ্যৎ এমন সুন্দর স্মৃতিতে ভরে উঠুক।
+
+                ম্যাডাম, তোমাকে একটা কথা জিজ্ঞেস করতে ইচ্ছে করে। তুমি কি জানো, তোমাকে নিয়ে আমি কতবার মনে মনে গল্প সাজিয়েছি? কতবার ভেবেছি, তোমাকে এই কথাটা বলব, ওই কথাটা বলব? কতবার কোনো সুন্দর মুহূর্ত কল্পনা করে নিজের মনেই হেসেছি?
+
+                হয়তো জানো না। হয়তো কখনো জানার প্রয়োজনও মনে করোনি। কিন্তু আজ এই লেখার মাধ্যমে তোমাকে জানাতে চাই, আমার কাছে তোমাকে নিয়ে ভাবার বিষয়টা কতটা সুন্দর।
+
+                তোমার সঙ্গে আমার প্রতিটি কথোপকথন যে অসাধারণ হবে, এমন নয়। সবসময় আমরা একমত হব, সেটাও নয়। সবসময় দুজনের মন ভালো থাকবে, সেটাও সম্ভব নয়। কিন্তু আমি চাই আমাদের মধ্যে এমন একটা সম্পর্ক থাকুক, যেখানে কোনো কঠিন মুহূর্ত এলেও আমরা একে অপরকে অসম্মান না করি।
+
+                আমি চাই, তুমি আমার কাছে নিজের মতো থাকতে পারো। তোমাকে সবসময় ভালো মেয়ে, ভালো প্রেমিকা কিংবা নিখুঁত মানুষ হওয়ার অভিনয় করতে হবে না। তোমার যেমন ভালো দিক আছে, তেমনি দুর্বলতাও থাকতে পারে। তোমার যেমন আনন্দ আছে, তেমনি কষ্টও থাকতে পারে। তোমার যেমন স্বপ্ন আছে, তেমনি ভয়ও থাকতে পারে। আমি তোমাকে একজন সম্পূর্ণ মানুষ হিসেবে জানতে চাই।
+
+                আর আমিও চাই তুমি আমাকে আমার ভালো-মন্দ সব দিকসহ জানো। আমার ভুলগুলো বুঝতে পারো, আমার ভালো দিকগুলোকে মূল্য দাও এবং প্রয়োজন হলে আমাকে সঠিক পথে চলতে সাহায্য করতে পারো।
+
+                আমাদের দুজনের জীবনেই অনেক দায়িত্ব রয়েছে। তাই আমি চাই আমরা একে অপরের জীবনের উন্নতির কারণ হই, বাধা না হই। একে অপরকে উৎসাহ দিই, সম্মান করি এবং নিজেদের ভবিষ্যৎ সুন্দর করার চেষ্টা করি।
+
+                ম্যাডাম, কখনো যদি তোমার মন খারাপ থাকে, মনে রেখো তোমার অনুভূতিগুলো গুরুত্বপূর্ণ। কখনো যদি নিজের ওপর বিশ্বাস কমে যায়, মনে রেখো তুমি অনেক কিছু করার যোগ্য। কখনো যদি কোনো কাজে ব্যর্থ হও, মনে রেখো ব্যর্থতা জীবনের শেষ কথা নয়। আবার চেষ্টা করা যায়, নতুন করে শুরু করা যায়।
+
+                আমি চাই তুমি নিজের জীবনে সুখী হও। তোমার হাসির কারণগুলো যেন কখনো হারিয়ে না যায়। তোমার স্বপ্নগুলো যেন শুধু কল্পনায় আটকে না থাকে। তোমার জীবনে এমন অনেক সুন্দর মুহূর্ত আসুক, যেগুলো মনে করে তুমি নিজেই আনন্দিত হবে।
+
+                আর একটা কথা, ম্যাডাম, তোমার কাছে আমার ছোট্ট একটা অনুরোধ আছে। কখনো আমার কোনো আচরণে কষ্ট পেলে চুপ করে থেকো না। আমাকে বলো। তোমার ভালো না লাগা বিষয়গুলো জানাও। তোমার প্রত্যাশাগুলো প্রকাশ করো। আমি সবকিছু বুঝতে পারব এমন নিশ্চয়তা দিতে পারি না, কিন্তু তোমার কথা বোঝার চেষ্টা করব।
+
+                তোমার কাছেও আমার প্রত্যাশা খুব সাধারণ—আমরা যেন একে অপরের সঙ্গে সত্যবাদী থাকি, বিশ্বাস বজায় রাখি, একে অপরের সম্মান করি এবং কোনো সমস্যা হলে সুন্দরভাবে সমাধানের চেষ্টা করি।
+
+                আমি চাই না আমাদের ভালোবাসা শুধু সুন্দর সুন্দর কথার মধ্যে সীমাবদ্ধ থাকুক। আমি চাই আমাদের আচরণে, যত্নে, দায়িত্ববোধে এবং একে অপরকে সম্মানে সেই ভালোবাসার প্রকাশ থাকুক।
+
+                ম্যাডাম, এতক্ষণে হয়তো তুমি বুঝতে পেরেছ, তোমাকে নিয়ে আমার কথা কত দীর্ঘ হতে পারে। আসলে তোমাকে নিয়ে লিখতে বসলে কোথায় থামব, সেটা বুঝতে পারি না। একটা কথা লিখতে গিয়ে আরেকটা কথা মনে পড়ে। একটা অনুভূতি প্রকাশ করতে গিয়ে আরও দশটা অনুভূতি সামনে চলে আসে।
+
+                হয়তো এই লেখার প্রতিটি বাক্য তোমার মনে থাকবে না। হয়তো সবকিছু পড়ার পরেও আমার মনের সব কথা তুমি বুঝতে পারবে না। তবুও আমার চেষ্টা থাকবে, তোমাকে যেন কখনো অনুভব করাতে না হয় যে তোমার কোনো মূল্য নেই।
+
+                তুমি মূল্যবান, তোমার অনুভূতি মূল্যবান, তোমার স্বপ্ন মূল্যবান এবং তোমার নিজের অস্তিত্বও মূল্যবান।
+
+                আমি তোমাকে শুধু আমার ভালোবাসার মানুষ হিসেবে নয়, একজন স্বতন্ত্র মানুষ হিসেবেও সম্মান করতে চাই।
+
+                জানো ম্যাডাম, পৃথিবীতে ভালোবাসা নিয়ে অনেক সুন্দর সুন্দর কথা বলা হয়। অনেকেই বলে, ভালোবাসা মানে সারাজীবন পাশে থাকা, ভালোবাসা মানে কখনো ছেড়ে না যাওয়া, ভালোবাসা মানে সবকিছু ভুলে একজনকে নিয়েই বেঁচে থাকা। কিন্তু আমার কাছে ভালোবাসার আরও একটি সুন্দর অর্থ আছে।
+
+                আমার কাছে ভালোবাসা মানে এমন একজন মানুষকে পাওয়া, যার সঙ্গে নিজের জীবনের গল্প ভাগ করে নিতে ইচ্ছে করে। যার ভালো থাকাটা কামনা করতে ইচ্ছে করে। যার স্বপ্নগুলোকে সম্মান করতে ইচ্ছে করে। যার সঙ্গে নিজের ভুলগুলো শুধরে নিতে ইচ্ছে করে। যার সঙ্গে শুধু আজকের দিন নয়, আগামী দিনের সুন্দর মুহূর্তগুলোও কল্পনা করতে ভালো লাগে।
+
+                আর আমার সেই মানুষটি তুমি, ম্যাডাম।
+
+                তোমাকে নিয়ে আমার সব স্বপ্ন পূরণ হবে কি না, আমি জানি না। ভবিষ্যৎ আমাদের কোথায় নিয়ে যাবে, সেটাও জানি না। তবুও আমি চাই, যতদিন আমরা একে অপরের জীবনে থাকব, ততদিন যেন ভালোবাসা, বিশ্বাস, সম্মান এবং আন্তরিকতা বজায় থাকে।
+
+                আমি চাই, তুমি কখনো আমার ভালোবাসার কারণে নিজের স্বাধীনতা হারিয়ে ফেলো না। বরং আমাদের ভালোবাসা তোমাকে নিজের স্বপ্ন পূরণের সাহস দিক। আমি চাই না তুমি আমার জন্য নিজের জীবন থামিয়ে রাখো। আমি চাই তুমি এগিয়ে যাও, বড় হও, নিজের স্বপ্ন পূরণ করো। আর সেই পথচলায় আমরা দুজন যদি একে অপরের পাশে থাকতে পারি, তাহলে সেটাই হবে অনেক সুন্দর।
+
+                ম্যাডাম, একটা কথা হয়তো হাজারবার বললেও পুরোনো হবে না।
+
+                আমি তোমাকে ভালোবাসি।
+
+                শুধু তোমার সঙ্গে কথা বলার জন্য নয়, শুধু তোমার হাসির জন্য নয়, শুধু তোমার সুন্দর মুহূর্তগুলোর জন্যও নয়; তোমার সম্পূর্ণ মানুষটাকে জানার, বোঝার এবং সম্মান করার ইচ্ছা থেকেই এই ভালোবাসা।
+
+                তোমার ভালো দিকগুলো আমার ভালো লাগে, তোমার নিজস্বতা আমার ভালো লাগে, তোমার সঙ্গে গল্প করতে ভালো লাগে, তোমার সঙ্গে ভবিষ্যতের স্বপ্ন দেখতে ভালো লাগে।
+
+                তুমি আমার জীবনের প্রতিটি সমস্যার সমাধান নও, আমিও তোমার জীবনের প্রতিটি সমস্যার সমাধান হতে পারব না। কিন্তু আমরা চাইলে একে অপরের জীবনে সুন্দর কিছু অনুভূতি যোগ করতে পারি।
+
+                আমি চাই আমাদের গল্পে এমন অনেক অধ্যায় থাকুক, যেগুলো এখনো লেখা হয়নি। এমন অনেক স্মৃতি তৈরি হোক, যেগুলো এখনো আমাদের অজানা। এমন অনেক আনন্দের মুহূর্ত আসুক, যেগুলো আমরা এখনো কল্পনাও করিনি।
+
+                তোমাকে নিয়ে আমার এই বিশাল লেখার প্রতিটি শব্দের মধ্যে একটা কথাই বারবার ফিরে আসে—তুমি আমার কাছে গুরুত্বপূর্ণ।
+
+                তোমার সঙ্গে কাটানো সময় আমার কাছে মূল্যবান। তোমার বলা কথাগুলো আমার কাছে মূল্যবান। তোমার হাসি, তোমার অভিমান, তোমার স্বপ্ন, তোমার অনুভূতি—সবকিছুরই আলাদা গুরুত্ব রয়েছে।
+
+                ম্যাডাম, যদি কখনো এই লেখাটা আবার পড়ো, তাহলে শুধু এটুকু মনে রেখো, আমি তোমাকে কোনো নিখুঁত গল্পের চরিত্র হিসেবে ভালোবাসতে চাই না। আমি তোমাকে বাস্তবের একজন মানুষ হিসেবে ভালোবাসতে চাই। তোমার হাসি যেমন থাকবে, তেমনি মন খারাপও থাকবে। তোমার সফলতা যেমন থাকবে, তেমনি ব্যর্থতাও আসতে পারে। তোমার ভালো লাগা যেমন থাকবে, তেমনি কিছু অপছন্দও থাকবে।
+
+                আমি চাই আমরা একে অপরকে সেই বাস্তবতা নিয়েই বুঝতে শিখি।
+
+                আর যখনই তোমার মনে হবে, তোমাকে নিয়ে এতগুলো কথা কেন লিখেছিলাম, তখন একটা বিষয় মনে করবে—কিছু অনুভূতি ছোট করে প্রকাশ করা যায় না। কিছু মানুষকে নিয়ে মনের মধ্যে এত কথা জমে থাকে যে, সেগুলো প্রকাশ করার জন্য হাজার হাজার শব্দও কম মনে হয়।
+
+                তুমি আমার কাছে তেমনই একজন।
+
+                তোমাকে ভালোবাসি, ম্যাডাম। তোমার ভালো থাকা চাই, তোমার হাসি চাই, তোমার স্বপ্নের পূরণ চাই। আর আমাদের দুজনের জন্য চাই এমন একটা সুন্দর সম্পর্ক, যেখানে ভালোবাসার পাশাপাশি থাকবে বিশ্বাস, সম্মান, বন্ধুত্ব, দায়িত্ববোধ এবং একে অপরকে বোঝার আন্তরিক চেষ্টা।
+
+                তোমাকে নিয়ে আমার মনের কথাগুলো হয়তো এই লেখায় শেষ করা সম্ভব নয়। কারণ ভালোবাসার অনুভূতি কোনো নির্দিষ্ট সংখ্যক শব্দে শেষ হয়ে যায় না। প্রতিদিন নতুন কিছু অনুভূতি তৈরি হয়, নতুন কিছু স্মৃতি জমা হয়, নতুন কিছু স্বপ্ন জন্ম নেয়।
+
+                আর সেই প্রতিটি নতুন অনুভূতির গল্পে তোমার জন্য আমার মায়া, ভালোবাসা ও সম্মান যেন সুন্দরভাবে বেঁচে থাকে।
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Lightbox Modal for Single Image with Caption -->
+    <div id="lightbox-modal">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <img id="lightbox-img" src="" alt="Full View">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <script>
+        // পেজ লোড হওয়ার সাথে সাথে চেক করা হবে আগে আনলক করা ছিল কি না
+        window.addEventListener('load', function () {
+            if (sessionStorage.getItem('unlocked') === 'true') {
+                document.body.classList.add('unlocked');
+                document.getElementById('auth-section').style.display = 'none';
+                document.getElementById('content-section').classList.add('show');
+                document.getElementById('top-left-timer').style.display = 'block';
+                history.replaceState({ step: 'menu' }, '', '#menu');
+            } else {
+                history.replaceState({ step: 'login' }, '', window.location.pathname);
+            }
+        });
+
+        function checkPassword() {
+            const correctPassword = "abida17";
+            const userPassword = document.getElementById('passcode').value;
+            const errorText = document.getElementById('error');
+
+            if (userPassword === correctPassword) {
+                sessionStorage.setItem('unlocked', 'true');
+                document.body.classList.add('unlocked');
+                document.getElementById('auth-section').style.display = 'none';
+                document.getElementById('content-section').classList.add('show');
+                document.getElementById('top-left-timer').style.display = 'block';
+                history.pushState({ step: 'menu' }, '', '#menu');
+            } else {
+                errorText.style.display = 'block';
+            }
+        }
+
+        let activeModalId = '';
+        let heartIntervals = {};
+
+        // মোডাল ওপেন করার ফাংশন
+        function openModal(modalId) {
+            activeModalId = modalId;
+            document.getElementById(modalId).style.display = 'flex';
+            history.pushState({ step: 'modal', id: modalId }, '', '#' + modalId);
+
+            // ২ ও ৫ নম্বর মোডালের জন্য লাভ বৃষ্টির ফাংশন কল
+            if (modalId === 'note-modal' || modalId === 'eyes-modal') {
+                startHeartRain(modalId);
+            }
+        }
+
+        // লাভ বৃষ্টি তৈরির ফাংশন
+        function startHeartRain(modalId) {
+            const modal = document.getElementById(modalId);
+            const container = modal.querySelector('.heart-container');
+            if (!container) return;
+
+            if (heartIntervals[modalId]) clearInterval(heartIntervals[modalId]);
+
+            heartIntervals[modalId] = setInterval(() => {
+                if (modal.style.display !== 'flex') {
+                    clearInterval(heartIntervals[modalId]);
+                    return;
+                }
+                const heart = document.createElement('div');
+                heart.classList.add('rain-heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 2.5) + 's';
+                heart.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                container.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5500);
+            }, 350);
+        }
+
+        // ড্রাইভ লিংক সরাসরি নতুন ট্যাবে ওপেন করার ফাংশন
+        function openDriveLink() {
+            window.open('https://drive.google.com/drive/folders/1kGAuwgy4_hcJNqmmlFaFpbqYVHen_peC', '_blank');
+        }
+
+        // মোডাল ক্লোজ করার ফাংশন
+        function closeModal(modalId) {
+            history.back();
+        }
+
+        // ১ নম্বর গ্যালারির সাধারণ ছবির জন্য লাইটবক্স
+        function openSimpleLightbox(imgSrc) {
+            openLightbox(imgSrc, "আমাদের সুন্দর কিছু মুহূর্ত ❤️");
+        }
+
+        // ৩ নম্বর বা গ্যালারির প্রিমিয়াম ফ্রেম ছবির জন্য লাইটবক্স (ক্যাপশন সহ)
+        function openLightbox(imgSrc, captionText) {
+            const lightbox = document.getElementById('lightbox-modal');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            
+            lightboxImg.src = imgSrc;
+            lightboxCaption.innerText = captionText;
+            lightbox.style.display = 'flex';
+            history.pushState({ step: 'lightbox', modalId: activeModalId }, '', '#lightbox');
+        }
+
+        function closeLightbox() {
+            history.back();
+        }
+
+        // --- লাইভ টাইমার কাউন্টডাউন স্ক্রিপ্ট (১৭ ফেব্রুয়ারি, ২০২৫ থেকে শুরু) ---
+        const startDate = new Date('2025-02-17T00:00:00').getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const difference = now - startDate;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days;
+                document.getElementById('hours').innerText = hours;
+                document.getElementById('minutes').innerText = minutes;
+                document.getElementById('seconds').innerText = seconds;
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // ব্রাউজারের ব্যাক বাটন বা হিস্ট্রি পরিবর্তনের নিখুঁত হ্যান্ডলার
+        window.addEventListener('popstate', function (event) {
+            const state = event.state;
+
+            // প্রথমে সব মোডাল ও লাইটবক্স হাইড করা হচ্ছে
+            document.getElementById('lightbox-modal').style.display = 'none';
+            document.getElementById('gallery-modal').style.display = 'none';
+            document.getElementById('note-modal').style.display = 'none';
+            document.getElementById('madam-gallery-modal').style.display = 'none';
+            document.getElementById('eyes-modal').style.display = 'none';
+
+            if (!state || state.step === 'login') {
+                sessionStorage.removeItem('unlocked');
+                document.body.classList.remove('unlocked');
+                document.getElementById('auth-section').style.display = 'block';
+                document.getElementById('content-section').classList.remove('show');
+                document.getElementById('top-left-timer').style.display = 'none';
+                document.getElementById('passcode').value = '';
+                document.getElementById('error').style.display = 'none';
+                activeModalId = '';
+            } else if (state.step === 'menu') {
+                document.body.classList.add('unlocked');
+                document.getElementById('auth-section').style.display = 'none';
+                document.getElementById('content-section').classList.add('show');
+                document.getElementById('top-left-timer').style.display = 'block';
+                activeModalId = '';
+            } else if (state.step === 'modal') {
+                document.body.classList.add('unlocked');
+                document.getElementById('auth-section').style.display = 'none';
+                document.getElementById('content-section').classList.add('show');
+                document.getElementById('top-left-timer').style.display = 'block';
+                activeModalId = state.id;
+                document.getElementById(state.id).style.display = 'flex';
+                if (state.id === 'note-modal' || state.id === 'eyes-modal') {
+                    startHeartRain(state.id);
+                }
+            } else if (state.step === 'lightbox') {
+                document.body.classList.add('unlocked');
+                document.getElementById('auth-section').style.display = 'none';
+                document.getElementById('content-section').classList.add('show');
+                document.getElementById('top-left-timer').style.display = 'block';
+                activeModalId = state.modalId;
+                if (state.modalId) {
+                    document.getElementById(state.modalId).style.display = 'flex';
+                }
+                document.getElementById('lightbox-modal').style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+</html>
